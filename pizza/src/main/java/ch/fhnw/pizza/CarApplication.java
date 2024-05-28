@@ -14,13 +14,13 @@ import jakarta.annotation.PostConstruct;
 @SpringBootApplication
 @RestController
 @Hidden // Hide this controller from the Swagger UI
-public class PizzaApplication {
+public class CarApplication {
 
 	@Autowired
 	private MenuService menuService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(PizzaApplication.class, args);
+		SpringApplication.run(CarApplication.class, args);
 	}
 	
 
