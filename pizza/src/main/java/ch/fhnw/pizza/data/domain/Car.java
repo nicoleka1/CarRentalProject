@@ -10,46 +10,61 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pizza")
-public class Pizza {
+@Table(name = "car")
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Hidden //This annotation hides the id field from the swagger documentation
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "car_id", nullable = false)
+    private Long carID;
 
-    @Column(name = "pizza_toppings")
-    private String pizzaToppings;
+    @Column(name = "car_brand")
+    private String carBrand;
 
-    @Column(name = "pizza_name")
-    private String pizzaName;
+    @Column(name = "car_model")
+    private String carModel;
+
+    @Column(name = "car_year")
+    private int carYear;
+
+    @Column(name = "car_color")
+    private String carColor;
+
+    @Column(name = "car_licence_plate")
+    private String carLicencePlate;
+
+    @Column(name = "car_rental_rate")
+    private Long carRentalRate;
+
+    @Column(name = "car_availability")
+    private String carAvailability;
 
     @ManyToOne
     private Menu menu;
 
-    public Long getId() {
-        return id;
+    public Long getCarId() {
+        return carID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long carID) {
+        this.carID = carID;
     }
 
-    public String getPizzaToppings() {
-        return pizzaToppings;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public void setPizzaToppings(String pizzaToppings) {
-        this.pizzaToppings = pizzaToppings;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
-    public String getPizzaName() {
-        return pizzaName;
+    public String getCarModel() {
+        return carModel;
     }
 
-    public void setPizzaName(String pizzaName) {
-        this.pizzaName = pizzaName;
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     } 
     
 }
