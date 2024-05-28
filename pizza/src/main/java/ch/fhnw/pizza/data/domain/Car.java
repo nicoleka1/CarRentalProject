@@ -40,6 +40,7 @@ public class Car {
     @Column(name = "car_availability")
     private String carAvailability;
 
+ 
     @ManyToOne
     private Menu menu;
 
@@ -66,5 +67,45 @@ public class Car {
     public void setCarModel(String carModel) {
         this.carModel = carModel;
     } 
+
+    public int getCarYear() {
+        return carYear;
+    }
+
+    public void setCarYear(int carYear) {
+        this.carYear = carYear;
+    }
+
+    public String getCarColor() {
+        return carColor;
+    }
+
+    public void setCarColor(String carColor) {
+        this.carColor = carColor;
+    }
+
+    public String getCarLicencePlate() {
+        return carLicencePlate;
+    }
+
+    public void setCarLicencePlate(String carLicencePlate) {
+        this.carLicencePlate = carLicencePlate;
+    }
+
+    public Long getCarRentalRate() {
+        return carRentalRate;
+    }
+
+    public void setCarRentalRate(Long carRentalRate) {
+        this.carRentalRate = carRentalRate;
+    }
+
+    public String getCarAvailability() {
+        return carAvailability;
+    }
+
+    public void setCarAvailability(String carAvailability) {
+        this.carAvailability = carAvailability;
+    }
     
 }
