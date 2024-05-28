@@ -17,10 +17,11 @@ public class CarController {
 
     @Autowired
     private CarService carService;
-    @GetMapping(value="/")
-    public String getWelcomeString() {
-        
-        return "Hello, welcome to our Cars!";
+    @GetMapping(path="/", produces = "application/json")
+    public List<Car> getCarList() {
+        List<Car> carList = carService.getAllCars();
+
+        return carList;
     }
 
     @PostMapping(path="/", consumes="application/json", produces = "application/json")
@@ -36,28 +37,19 @@ public class CarController {
     }
 
 
-    /*
     @GetMapping(path="/{id}", produces = "application/json")
     public ResponseEntity getCar(@PathVariable Long id) {
 
-    
-       
         try{
             Car car = carService.findCarByCarID(id);
             return ResponseEntity.ok(car);
         }
         catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No pizza found with given id");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No car found with given id");
         }
-    }*/
+    }
 
 
-    //@GetMapping(path="/pizzas", produces = "application/json")
-    //public List<Pizza> getPizzaList() {
-    //    List<Pizza> pizzaList = menuService.getAllPizzas();
-
-    //    return pizzaList;
-    //}
 
 
 
