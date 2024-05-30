@@ -49,33 +49,29 @@ public class CarController {
         }
     }
 
+    @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
+    public ResponseEntity updateCar(@PathVariable Long id, @RequestBody Car car) {
+        try{
+            car = carService.updateCar(id, car);
+            return ResponseEntity.ok(car);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("No car found with given id");
+        }
+    }
 
 
+    @DeleteMapping(path="/{id}")
+    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
+        try{
+            carService.deleteCar(id);
+            return ResponseEntity.ok("Car with id " + id + " deleted");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
+        }
+    }
 
 
-    //@PutMapping(path="/pizzas/{id}", consumes="application/json", produces = "application/json")
-    //public ResponseEntity updatePizza(@PathVariable Long id, @RequestBody Pizza pizza) {
-    //    try{
-    //        pizza = menuService.updatePizza(id, pizza);
-            
-    //    } catch (Exception e) {
-    //        return ResponseEntity.status(HttpStatus.CONFLICT).body("No pizza found with given id");
-
-    //    }
-    //    return ResponseEntity.ok(pizza);
-        
-    //}
-
-    //@DeleteMapping(path="/pizzas/{id}")
-    //public ResponseEntity<String> deletePizza(@PathVariable Long id) {
-    //    try{
-    //        menuService.deletePizza(id);
-    //        return ResponseEntity.ok("Pizza with id " + id + " deleted");
-    //    } catch (Exception e) {
-    //        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pizza not found");
-    //    }
-    //}
-
+ 
     //@GetMapping(path="", produces = "application/json")
     //public ResponseEntity<Menu> getMenu(@RequestParam String location) {
     //    Menu menu = menuService.getMenuByLocation(location);
