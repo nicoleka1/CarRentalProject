@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.pizza.business.service.CarService;
 import ch.fhnw.pizza.data.domain.Car;
+import ch.fhnw.pizza.business.service.AdminService;
+import ch.fhnw.pizza.data.domain.Admin;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.annotation.PostConstruct;
 
@@ -18,6 +20,9 @@ public class CarApplication {
 
 	@Autowired
 	private CarService carService;
+
+	@Autowired
+	private AdminService adminService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarApplication.class, args);
@@ -60,6 +65,13 @@ public class CarApplication {
 		car3.setCarRentalRate(200L);
 		car3.setCarAvailability("Available");
 		carService.addCar(car3);
+
+
+		Admin admin1 = new Admin();
+		admin1.setAdminName("John Doe");
+		admin1.setAdminEmail("john.doe@example.com");
+		adminService.addAdmin(admin1);
+
 	}
 
 
