@@ -29,7 +29,7 @@ public class Admin {
     private int adminPassword;
 
     @Column(name = "admin_address")
-    private String adminAdress;
+    private String adminAddress;
 
     @Column(name = "admin_phone")
     private String adminPhone;
@@ -71,12 +71,12 @@ public class Admin {
         this.adminPassword = adminPassword;
     }
     
-    public String getAdminAdress() {
-        return adminAdress;
+    public String getAdminAddress() {
+        return adminAddress;
     }
    
-    public void setAdminAdress(String adminAdress) {
-        this.adminAdress = adminAdress;
+    public void setAdminAddress(String adminAddress) {
+        this.adminAddress = adminAddress;
     }
 
     public String getAdminPhone() {

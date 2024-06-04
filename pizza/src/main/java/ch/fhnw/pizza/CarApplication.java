@@ -78,6 +78,9 @@ public class CarApplication {
 		Admin admin1 = new Admin();
 		admin1.setAdminName("John Doe");
 		admin1.setAdminEmail("john.doe@example.com");
+		admin1.setAdminPassword(1234);
+		admin1.setAdminAddress("1234 Elm Street");
+		admin1.setAdminPhone("123-456-7890");
 		adminService.addAdmin(admin1);
 
 
@@ -88,6 +91,22 @@ public class CarApplication {
 		rental1.setRentalEndDate(LocalDate.of(2021, 10, 5));
 		rental1.setRentalTotalCost(1000L);
 		rentalService.addRental(rental1);
+
+		Rental rental2 = new Rental();
+		rental2.setRentalCarId(1);
+		rental2.setRentalAdminId(1);
+		rental2.setRentalStartDate(LocalDate.of(2021, 10, 1));
+		rental2.setRentalEndDate(LocalDate.of(2021, 10, 5));
+		rental2.setRentalTotalCost(1500L);
+		rentalService.addRental(rental2);
+
+		Rental rental3 = new Rental();
+		rental3.setRentalCarId(2);
+		rental3.setRentalAdminId(2);
+		rental3.setRentalStartDate(LocalDate.of(2021, 10, 1));
+		rental3.setRentalEndDate(LocalDate.of(2021, 10, 5));
+		rental3.setRentalTotalCost(2000L);
+		rentalService.addRental(rental3);
 
 
 	}

@@ -34,48 +34,39 @@ public class AdminController {
         
     }
 
-
- /*   @GetMapping(path="/{id}", produces = "application/json")
-    public ResponseEntity getCar(@PathVariable Long id) {
+    @GetMapping(path="/{id}", produces = "application/json")
+    public ResponseEntity getAdmin(@PathVariable Long id) {
 
         try{
-            Car car = carService.findCarByCarID(id);
-            return ResponseEntity.ok(car);
+            Admin admin = adminService.findAdminById(id);
+            return ResponseEntity.ok(admin);
         }
         catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No car found with given id");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No admin found with given id");
         }
     }
 
     @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
-    public ResponseEntity updateCar(@PathVariable Long id, @RequestBody Car car) {
+    public ResponseEntity updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
         try{
-            car = carService.updateCar(id, car);
-            return ResponseEntity.ok(car);
+            admin = adminService.updateAdmin(id, admin);
+            return ResponseEntity.ok(admin);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("No car found with given id");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("No admin found with given id");
         }
     }
 
 
     @DeleteMapping(path="/{id}")
-    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
+    public ResponseEntity<String> deleteAdmin(@PathVariable Long id) {
         try{
-            carService.deleteCar(id);
-            return ResponseEntity.ok("Car with id " + id + " deleted");
+            adminService.deleteAdmin(id);
+            return ResponseEntity.ok("Admin with id " + id + " deleted");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
         }
     }
 
 
- 
-    //@GetMapping(path="", produces = "application/json")
-    //public ResponseEntity<Menu> getMenu(@RequestParam String location) {
-    //    Menu menu = menuService.getMenuByLocation(location);
-    //    return ResponseEntity.ok(menu);      
-    //}
-
-     */
     
 }
