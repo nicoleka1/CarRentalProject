@@ -1,5 +1,7 @@
 package ch.fhnw.pizza;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.pizza.business.service.CarService;
+import ch.fhnw.pizza.business.service.RentalService;
 import ch.fhnw.pizza.data.domain.Car;
 import ch.fhnw.pizza.business.service.AdminService;
+import ch.fhnw.pizza.data.domain.Rental;
+import ch.fhnw.pizza.business.service.RentalService;
 import ch.fhnw.pizza.data.domain.Admin;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.annotation.PostConstruct;
@@ -23,6 +28,9 @@ public class CarApplication {
 
 	@Autowired
 	private AdminService adminService;
+
+	@Autowired
+	private RentalService rentalService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarApplication.class, args);
@@ -71,6 +79,16 @@ public class CarApplication {
 		admin1.setAdminName("John Doe");
 		admin1.setAdminEmail("john.doe@example.com");
 		adminService.addAdmin(admin1);
+
+
+		Rental rental1 = new Rental();
+		rental1.setRentalCarId(0);
+		rental1.setRentalAdminId(0);
+		rental1.setRentalStartDate(LocalDate.of(2021, 10, 1));
+		rental1.setRentalEndDate(LocalDate.of(2021, 10, 5));
+		rental1.setRentalTotalCost(1000L);
+		rentalService.addRental(rental1);
+
 
 	}
 

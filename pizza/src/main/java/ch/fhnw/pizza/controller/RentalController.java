@@ -1,7 +1,7 @@
 package ch.fhnw.pizza.controller;
 
-import ch.fhnw.pizza.business.service.AdminService;
-import ch.fhnw.pizza.data.domain.Admin;
+import ch.fhnw.pizza.business.service.RentalService;
+import ch.fhnw.pizza.data.domain.Rental;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,30 +12,32 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/admin")
-public class AdminController {
+@RequestMapping(path="/rentals")
+public class RentalController {
 
     @Autowired
-    private AdminService adminService;
+    private RentalService rentalService;
     @GetMapping(path="/", produces = "application/json")
-    public List<Admin> getAdminList() {
-        List<Admin> adminList = adminService.getAllAdmins();
-        return adminList;
+    public List<Rental> getRentalList() {
+        List<Rental> rentalList = rentalService.getAllRentals();
+
+        return rentalList;
     }
 
-    @PostMapping(path="/", consumes="application/json", produces = "application/json")
-    public ResponseEntity addAdmin(@RequestBody Admin admin) {
+  @PostMapping(path="/", consumes="application/json", produces = "application/json")
+    public ResponseEntity addRental(@RequestBody Rental rental) {
         try{
-            admin = adminService.addAdmin(admin);
+            rental = rentalService.addRental(rental);
+            
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Admin already exists with given name");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Rental already exists with given name");
         }
-        return ResponseEntity.ok(admin);
+        return ResponseEntity.ok(rental);
         
     }
+/*
 
-
- /*   @GetMapping(path="/{id}", produces = "application/json")
+    @GetMapping(path="/{id}", produces = "application/json")
     public ResponseEntity getCar(@PathVariable Long id) {
 
         try{
@@ -75,7 +77,5 @@ public class AdminController {
     //    Menu menu = menuService.getMenuByLocation(location);
     //    return ResponseEntity.ok(menu);      
     //}
-
-     */
-    
+    */
 }

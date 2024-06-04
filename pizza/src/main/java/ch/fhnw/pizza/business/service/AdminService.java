@@ -16,8 +16,8 @@ public class AdminService {
     private AdminRepository adminRepository;
 
 
-    public Admin findAdminByEmail(String adminEmail) {
-        Admin admin = adminRepository.findAdminByEmail(adminEmail);
+    public Admin findAdminByAdminEmail(String adminEmail) {
+        Admin admin = adminRepository.findAdminByAdminEmail(adminEmail);
         return admin;
     }
 
