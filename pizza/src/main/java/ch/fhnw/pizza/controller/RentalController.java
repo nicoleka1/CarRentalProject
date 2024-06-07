@@ -35,47 +35,47 @@ public class RentalController {
         return ResponseEntity.ok(rental);
         
     }
-/*
 
-    @GetMapping(path="/{id}", produces = "application/json")
-    public ResponseEntity getCar(@PathVariable Long id) {
+
+      @GetMapping(path="/{id}", produces = "application/json")
+    public ResponseEntity getRental(@PathVariable Long id) {
 
         try{
-            Car car = carService.findCarByCarID(id);
-            return ResponseEntity.ok(car);
+            Rental rental = rentalService.findRentalByrentalID(id);
+            return ResponseEntity.ok(rental);
         }
         catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No car found with given id");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No rental found with given id");
         }
     }
 
     @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
-    public ResponseEntity updateCar(@PathVariable Long id, @RequestBody Car car) {
+    public ResponseEntity updateRental(@PathVariable Long id, @RequestBody Rental rental) {
         try{
-            car = carService.updateCar(id, car);
-            return ResponseEntity.ok(car);
+            rental = rentalService.updateRental(id, rental);
+            return ResponseEntity.ok(rental);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("No car found with given id");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("No rental found with given id");
         }
     }
 
 
     @DeleteMapping(path="/{id}")
-    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
+    public ResponseEntity<String> deleteRental(@PathVariable Long id) {
         try{
-            carService.deleteCar(id);
-            return ResponseEntity.ok("Car with id " + id + " deleted");
+            rentalService.deleteRental(id);
+            return ResponseEntity.ok("Rental with id " + id + " deleted");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rental not found");
         }
     }
 
 
  
-    //@GetMapping(path="", produces = "application/json")
-    //public ResponseEntity<Menu> getMenu(@RequestParam String location) {
-    //    Menu menu = menuService.getMenuByLocation(location);
-    //    return ResponseEntity.ok(menu);      
-    //}
-    */
+    /*@GetMapping(path="", produces = "application/json")
+        public ResponseEntity<Menu> getMenu(@RequestParam String location) {
+        Menu menu = menuService.getMenuByLocation(location);
+        return ResponseEntity.ok(menu);      
+    } */
+   
 }
