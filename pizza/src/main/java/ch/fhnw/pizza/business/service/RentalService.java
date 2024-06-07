@@ -15,7 +15,7 @@ public class RentalService {
     @Autowired
     private RentalRepository rentalRepository;
 
-    public Rental findRentalByrentalAdminID(Long id) {
+    public Rental findRentalByrentalID(Long id) {
         try {
             Rental rental = rentalRepository.findById(id).get();
             return rental;

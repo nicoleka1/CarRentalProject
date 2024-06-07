@@ -8,13 +8,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.pizza.business.service.CarService;
-import ch.fhnw.pizza.business.service.RentalService;
-import ch.fhnw.pizza.data.domain.Car;
 import ch.fhnw.pizza.business.service.AdminService;
-import ch.fhnw.pizza.data.domain.Rental;
+import ch.fhnw.pizza.business.service.CarService;
+import ch.fhnw.pizza.business.service.LocationService;
 import ch.fhnw.pizza.business.service.RentalService;
+
 import ch.fhnw.pizza.data.domain.Admin;
+import ch.fhnw.pizza.data.domain.Car;
+import ch.fhnw.pizza.data.domain.Location;
+import ch.fhnw.pizza.data.domain.Rental;
+
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.annotation.PostConstruct;
 
@@ -31,6 +34,9 @@ public class CarApplication {
 
 	@Autowired
 	private RentalService rentalService;
+
+	@Autowired
+	private LocationService locationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarApplication.class, args);
@@ -109,6 +115,22 @@ public class CarApplication {
 		rentalService.addRental(rental3);
 
 
+		Location location1 = new Location();
+		location1.setLocationName("Zurich");
+		location1.setLocationAddress("1234 Elm Street");
+		location1.setLocationCity("Zurich");
+		location1.setLocationState("ZH");
+		location1.setLocationZipCode("8000");
+		locationService.addLocation(location1);
+
+		Location location2 = new Location();
+		location2.setLocationName("Aargau");
+		location2.setLocationAddress("5678 Oak Street");
+		location2.setLocationCity("Aarau");
+		location2.setLocationState("AG");
+		location2.setLocationZipCode("5000");
+		locationService.addLocation(location2);
+		
 	}
 
 

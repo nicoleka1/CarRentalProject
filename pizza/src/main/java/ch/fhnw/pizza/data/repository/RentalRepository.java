@@ -10,7 +10,13 @@ import ch.fhnw.pizza.data.domain.Rental;
 @Repository
 //JpaRepository should be typed to the domain class and an ID type
 
+/*
 public interface RentalRepository extends JpaRepository<Rental, Long> {
-    Rental findRentalByrentalAdminID(Long rentalAdminID);
-    List<Rental> findRentalByrentalAdminID(Long rentalAdminID);
+    Rental findRentalByrentalID(Long rentalID);
+    List<Rental> findAllByrentalIDContainsIgnoreCase(Long rentalID);
+}
+*/
+
+public interface RentalRepository extends JpaRepository<Rental, Long> {
+    List<Rental> findAllByRentalID(Long rentalID);
 }

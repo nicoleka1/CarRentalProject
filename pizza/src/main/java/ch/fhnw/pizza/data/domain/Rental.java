@@ -47,8 +47,8 @@ public class Rental {
         this.rentalID = rentalID;
     }
 
-    public Long getRentalAdminId() {
-        return rentalAdminID;
+    public Long getrentalID() {
+        return rentalID;
     }
 
     public void setRentalAdminId(long i) {
