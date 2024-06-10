@@ -43,10 +43,16 @@ public class AdminService {
     public Admin updateAdmin(Long id, Admin admin) throws Exception {
         Admin adminToUpdate = adminRepository.findById(id).get();
         if(adminToUpdate != null) {
+            if(admin.getAdminName() != null)
+            adminToUpdate.setAdminName(admin.getAdminName());
             if(admin.getAdminEmail() != null)
                 adminToUpdate.setAdminEmail(admin.getAdminEmail());
-            if(admin.getAdminName() != null)
-                adminToUpdate.setAdminName(admin.getAdminName());
+            if(admin.getAdminPassword() != 0)
+                adminToUpdate.setAdminPassword(admin.getAdminPassword());
+            if(admin.getAdminAddress() != null)
+                adminToUpdate.setAdminAddress(admin.getAdminAddress());
+            if(admin.getAdminPhone() != null)
+                adminToUpdate.setAdminPhone(admin.getAdminPhone());          
             return adminRepository.save(adminToUpdate);
         }
         throw new Exception("Admin with id " + id + " does not exist");
@@ -58,6 +64,9 @@ public class AdminService {
         } else
             throw new Exception("Admin with id " + id + " does not exist");
     }
+
+
+
 
  /* //Business Logic to get current offer according to the location of the user requesting the menu
     private String getCurrentOffer(String location) {

@@ -37,12 +37,11 @@ public class Car {
     @Column(name = "car_rental_rate")
     private Long carRentalRate;
 
-    @Column(name = "car_availability")
-    private String carAvailability;
+    
 
  
     @ManyToOne
-    private Menu menu;
+    private Rental rental;
 
     public Long getCarId() {
         return carID;
@@ -100,12 +99,5 @@ public class Car {
         this.carRentalRate = carRentalRate;
     }
 
-    public String getCarAvailability() {
-        return carAvailability;
-    }
-
-    public void setCarAvailability(String carAvailability) {
-        this.carAvailability = carAvailability;
-    }
-    
+        
 }

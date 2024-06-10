@@ -36,10 +36,18 @@ public class CarService {
     public Car updateCar(Long id, Car car) throws Exception {
         Car carToUpdate = carRepository.findById(id).get();
         if(carToUpdate != null) {
-            if(car.getCarModel() != null)
-                carToUpdate.setCarModel(car.getCarModel());
             if(car.getCarBrand() != null)
                 carToUpdate.setCarBrand(car.getCarBrand());
+            if(car.getCarModel() != null)
+                carToUpdate.setCarModel(car.getCarModel());
+            if(car.getCarYear() > 0)
+                carToUpdate.setCarYear(car.getCarYear());
+            if(car.getCarColor() != null)
+                carToUpdate.setCarColor(car.getCarColor());
+            if(car.getCarLicencePlate() != null)
+                carToUpdate.setCarLicencePlate(car.getCarLicencePlate());
+            if(car.getCarRentalRate() != null)
+                carToUpdate.setCarRentalRate(car.getCarRentalRate());
             return carRepository.save(carToUpdate);
         }
         throw new Exception("Car with id " + id + " does not exist");
@@ -51,6 +59,8 @@ public class CarService {
         } else
             throw new Exception("Car with id " + id + " does not exist");
     }
+
+
 
  /* //Business Logic to get current offer according to the location of the user requesting the menu
     private String getCurrentOffer(String location) {

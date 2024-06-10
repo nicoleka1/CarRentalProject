@@ -49,6 +49,7 @@ public class CarController {
         }
     }
 
+
     @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
     public ResponseEntity updateCar(@PathVariable Long id, @RequestBody Car car) {
         try{
@@ -72,10 +73,5 @@ public class CarController {
 
 
  
-    //@GetMapping(path="", produces = "application/json")
-    //public ResponseEntity<Menu> getMenu(@RequestParam String location) {
-    //    Menu menu = menuService.getMenuByLocation(location);
-    //    return ResponseEntity.ok(menu);      
-    //}
-    
+
 }

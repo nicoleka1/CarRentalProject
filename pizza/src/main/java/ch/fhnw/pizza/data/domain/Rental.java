@@ -1,6 +1,7 @@
 package ch.fhnw.pizza.data.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.persistence.Column;
@@ -8,12 +9,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "rental")
 public class Rental {
+
+
+    @OneToMany(mappedBy = "rental")
+    private List<Car> carList;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,8 +26,8 @@ public class Rental {
     @Column(name = "rental_id", nullable = false)
     private Long rentalID;
 
-    @Column(name = "rental_admin_id")
-    private Long rentalAdminID;
+    @Column(name = "rental_user_id")
+    private Long rentalUserID;
 
     @Column(name = "rental_car_id")
     private Long rentalCarID;
@@ -39,7 +44,10 @@ public class Rental {
     @Column(name = "rental_status")
     private String rentalStatus;
 
-    public Long getRentalId() {
+    private String currentBooking;
+    
+
+    public Long getRentalID() {
         return rentalID;
     }
 
@@ -47,12 +55,12 @@ public class Rental {
         this.rentalID = rentalID;
     }
 
-    public Long getrentalID() {
-        return rentalID;
+    public Long getRentalUserID() {
+        return rentalUserID;
     }
 
-    public void setRentalAdminId(long i) {
-        this.rentalAdminID = i;
+    public void setRentalUserID(long i) {
+        this.rentalUserID = i;
     }
 
     public Long getRentalCarId() {
@@ -95,4 +103,22 @@ public class Rental {
         this.rentalStatus = rentalStatus;
     }
 
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public void setCarList(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    public String getCurrentBooking() {
+        return currentBooking;
+    }
+
+    public void setCurrentBooking(String currentBooking) {
+        this.currentBooking = currentBooking;
+    }
+
 }
+

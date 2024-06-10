@@ -9,7 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping(path="/rentals")
@@ -37,7 +42,7 @@ public class RentalController {
     }
 
 
-      @GetMapping(path="/{id}", produces = "application/json")
+    @GetMapping(path="/{id}", produces = "application/json")
     public ResponseEntity getRental(@PathVariable Long id) {
 
         try{
@@ -48,6 +53,43 @@ public class RentalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No rental found with given id");
         }
     }
+
+   /*@GetMapping(path = "/available-rentals", produces = "application/json")
+    public List<Rental> getAvailableRentals(@RequestParam("startDate") ChronoLocalDate startDate, @RequestParam("endDate") ChronoLocalDate endDate) {
+        List<Rental> rentalList = rentalService.getAllRentals();
+        List<Rental> availableRentals = new ArrayList<>();
+
+        for (Rental rental : rentalList) {
+            if ((rental.getRentalStartDate().isAfter(startDate) || rental.getRentalStartDate().isEqual(startDate)) &&
+                (rental.getRentalEndDate().isBefore(endDate) || rental.getRentalEndDate().isEqual(endDate))) {
+                availableRentals.add(rental);
+            }
+        }
+        return availableRentals;
+    }
+
+    */
+
+    @GetMapping(path = "/available-rentals?startDate={startDate}&endDate={endDate}", produces = "application/json")
+    public ResponseEntity getAvailableRentals(@RequestParam("startDate") ChronoLocalDate startDate, @RequestParam("endDate") ChronoLocalDate endDate) {
+        try {
+            List<Rental> rentalList = rentalService.getAllRentals();
+            List<Rental> availableRentals = new ArrayList<>();
+
+            for (Rental rental : rentalList) {
+                if ((rental.getRentalStartDate().isAfter(startDate) || rental.getRentalStartDate().isEqual(startDate)) &&
+                    (rental.getRentalEndDate().isBefore(endDate) || rental.getRentalEndDate().isEqual(endDate))) {
+                    availableRentals.add(rental);
+                }
+            }
+            return ResponseEntity.ok(availableRentals);
+        } catch (Exception e) {
+            // Log the exception message
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
+        }
+    }
+
 
     @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
     public ResponseEntity updateRental(@PathVariable Long id, @RequestBody Rental rental) {
@@ -70,6 +112,15 @@ public class RentalController {
         }
     }
 
+
+/*
+    @GetMapping(path="", produces = "application/json")
+    public ResponseEntity<Rental> getRental(@RequestParam String location) {
+       Rental rental = rentalService.getRentalByLocation(location);
+        return ResponseEntity.ok(rental);      
+    }
+    
+    */
 
  
     /*@GetMapping(path="", produces = "application/json")

@@ -57,7 +57,6 @@ public class CarApplication {
 		car.setCarColor("Red");
 		car.setCarLicencePlate("AG 123 456");
 		car.setCarRentalRate(100L);
-		car.setCarAvailability("Available");
 		carService.addCar(car);
 		
 		Car car2 = new Car();
@@ -67,7 +66,6 @@ public class CarApplication {
 		car2.setCarColor("Black");
 		car2.setCarLicencePlate("AG 789 123");
 		car2.setCarRentalRate(150L);
-		car2.setCarAvailability("Available");
 		carService.addCar(car2);
 
 		Car car3 = new Car();
@@ -77,7 +75,6 @@ public class CarApplication {
 		car3.setCarColor("White");
 		car3.setCarLicencePlate("AG 456 789");
 		car3.setCarRentalRate(200L);
-		car3.setCarAvailability("Available");
 		carService.addCar(car3);
 
 
@@ -92,7 +89,7 @@ public class CarApplication {
 
 		Rental rental1 = new Rental();
 		rental1.setRentalCarId(0);
-		rental1.setRentalAdminId(0);
+		rental1.setRentalUserID(0);
 		rental1.setRentalStartDate(LocalDate.of(2021, 10, 1));
 		rental1.setRentalEndDate(LocalDate.of(2021, 10, 5));
 		rental1.setRentalTotalCost(1000L);
@@ -100,7 +97,7 @@ public class CarApplication {
 
 		Rental rental2 = new Rental();
 		rental2.setRentalCarId(1);
-		rental2.setRentalAdminId(1);
+		rental2.setRentalUserID(1);
 		rental2.setRentalStartDate(LocalDate.of(2021, 10, 1));
 		rental2.setRentalEndDate(LocalDate.of(2021, 10, 5));
 		rental2.setRentalTotalCost(1500L);
@@ -108,7 +105,7 @@ public class CarApplication {
 
 		Rental rental3 = new Rental();
 		rental3.setRentalCarId(2);
-		rental3.setRentalAdminId(2);
+		rental3.setRentalUserID(2);
 		rental3.setRentalStartDate(LocalDate.of(2021, 10, 1));
 		rental3.setRentalEndDate(LocalDate.of(2021, 10, 5));
 		rental3.setRentalTotalCost(2000L);
