@@ -43,10 +43,17 @@ public class LocationService {
     public Location updateLocation(Long id, Location location) throws Exception {
         Location locationToUpdate = locationRepository.findById(id).get();
         if(locationToUpdate != null) {
-            if(location.getLocationCity() != null)
-                locationToUpdate.setLocationCity(location.getLocationCity());
+               
+            if(location.getLocationName() != null)
+                locationToUpdate.setLocationName(location.getLocationName());
             if(location.getLocationAddress() != null)
                 locationToUpdate.setLocationAddress(location.getLocationAddress());
+            if(location.getLocationCity() != null)
+                locationToUpdate.setLocationCity(location.getLocationCity());
+            if(location.getLocationState() != null)
+                locationToUpdate.setLocationState(location.getLocationState());
+            if(location.getLocationZipCode()!= null)
+                locationToUpdate.setLocationZipCode(location.getLocationZipCode());
             return locationRepository.save(locationToUpdate);
         }
         throw new Exception("Location with id " + id + " does not exist");
