@@ -51,7 +51,7 @@ public class RentalService {
             if(rental.getRentalStatus()!=null)
                 rentalToUpdate.setRentalStatus(rental.getRentalStatus());
             return rentalRepository.save(rentalToUpdate);
-       
+            
         }            
         throw new Exception("Rental with id " + id + " does not exist");
     }

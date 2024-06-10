@@ -1,41 +1,45 @@
 package ch.fhnw.pizza.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
-
 import org.springframework.security.core.userdetails.UserDetailsService;
-
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.nimbusds.jose.jwk.source.ImmutableSecret;
+
 import static org.springframework.security.config.Customizer.withDefaults;
+
+import javax.crypto.spec.SecretKeySpec;
+
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+    @Value("${jwt.key}")
+    private String jwtKey;
 
     @Bean
-    public UserDetailsService users() {
-        //Create two users with different roles and add them to the in-memory user store
-
+    public UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager(
             User.withUsername("myuser")
-                //.password("{noop}password") //create user with an encrypted password instead of the plain text password
-                .password("{bcrypt}$2a$10$9fxQtdWuRaYn5UchAm5iAexbPi7tmRadnDogJwXPR9fVDJyt9g/su")
-                .authorities("READ","ROLE_USER")
-                .build(), 
-            User.withUsername("myadmin")
-                //.password("{noop}password") //create user with an encrypted password instead of the plain text password
-                .password("{bcrypt}$2a$10$9fxQtdWuRaYn5UchAm5iAexbPi7tmRadnDogJwXPR9fVDJyt9g/su")
-                .authorities("READ","ROLE_ADMIN")
-                .build());
-
+                    .password("{noop}password")
+                    .authorities("READ","ROLE_USER")
+                    .build());
+        
     }
 
     @Bean
@@ -43,24 +47,27 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/menu").hasRole("USER") //note that the role need not be prefixed with "ROLE_"
-                        .requestMatchers("/menu/pizzas/**").hasRole("ADMIN") //note that the role need not be prefixed with "ROLE_"
-                        .requestMatchers("/menu/**",
-                                                    "/**", //allow access to the home page
-                                                    "/swagger-ui.html", //allow access to the swagger UI
-                                                    "/v3/api-docs/**",  //allow access to the swagger API documentation
-                                                    "/swagger-ui/**",   //allow access to the swagger UI
-                                                    "/h2-console/**")   //allow access to the h2-console
-                                                    .permitAll() 
-                        .anyRequest().hasAuthority("SCOPE_READ")           
-                )       
-                .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) //needed to allow access to the h2-console
-                .formLogin(withDefaults()) //need to include a static import for withDefaults, see the imports at the top of the file
+                        .requestMatchers("/cars").hasRole("USER") //only custom users with role USER can request a token
+                        .anyRequest().hasAuthority("SCOPE_READ") // only requests with scope inside the JWT token can access the endpoints        
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .oauth2ResourceServer(oAuth -> oAuth.jwt(Customizer.withDefaults()))
                 .httpBasic(withDefaults())
                 .build(); 
-    } 
+    }
+
+    @Bean
+    JwtEncoder jwtEncoder() {
+        return new NimbusJwtEncoder(new ImmutableSecret<>(jwtKey.getBytes()));
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        byte[] bytes = jwtKey.getBytes();
+        SecretKeySpec originalKey = new SecretKeySpec(bytes, 0, bytes.length,"RSA");
+        return NimbusJwtDecoder.withSecretKey(originalKey).macAlgorithm(MacAlgorithm.HS512).build();
+    }
 
 
-
-        
+    
 }

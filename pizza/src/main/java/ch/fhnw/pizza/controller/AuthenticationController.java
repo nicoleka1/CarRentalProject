@@ -17,29 +17,13 @@ import ch.fhnw.pizza.security.TokenService;
 import io.swagger.v3.oas.annotations.Hidden;
 
 @RestController
-@RequestMapping("/securitytest")
-public class WelcomeController {
+@RequestMapping("/authentication")
+public class AuthenticationController {
 
-   /*@GetMapping(value="/")
-    public String getWelcomeString() {
-        
-        return "Hello, welcome to our Pizzeria!";
-    }
-
-    @GetMapping(value="/user")
-    public String getUserRole(Authentication auth) {
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        String role = userDetails.getAuthorities().toArray()[1].toString();
-        return role;
-    }
-
-    */
-
-
- 
+  
     private final TokenService tokenService;
 
-    public WelcomeController(TokenService tokenService) {
+    public AuthenticationController(TokenService tokenService) {
         this.tokenService = tokenService;
     }
 

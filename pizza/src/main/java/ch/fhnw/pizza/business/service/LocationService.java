@@ -43,7 +43,6 @@ public class LocationService {
     public Location updateLocation(Long id, Location location) throws Exception {
         Location locationToUpdate = locationRepository.findById(id).get();
         if(locationToUpdate != null) {
-               
             if(location.getLocationName() != null)
                 locationToUpdate.setLocationName(location.getLocationName());
             if(location.getLocationAddress() != null)
