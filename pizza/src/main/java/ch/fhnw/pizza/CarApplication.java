@@ -12,12 +12,12 @@ import ch.fhnw.pizza.business.service.AdminService;
 import ch.fhnw.pizza.business.service.CarService;
 import ch.fhnw.pizza.business.service.LocationService;
 import ch.fhnw.pizza.business.service.RentalService;
-
+import ch.fhnw.pizza.business.service.CarUserService;
 import ch.fhnw.pizza.data.domain.Admin;
 import ch.fhnw.pizza.data.domain.Car;
 import ch.fhnw.pizza.data.domain.Location;
 import ch.fhnw.pizza.data.domain.Rental;
-
+import ch.fhnw.pizza.data.domain.CarUser;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.annotation.PostConstruct;
 
@@ -31,6 +31,9 @@ public class CarApplication {
 
 	@Autowired
 	private AdminService adminService;
+
+	@Autowired
+	private CarUserService carUserService;
 
 	@Autowired
 	private RentalService rentalService;
@@ -86,6 +89,48 @@ public class CarApplication {
 		admin1.setAdminPhone("123-456-7890");
 		adminService.addAdmin(admin1);
 
+		Admin admin2 = new Admin();
+		admin2.setAdminName("Alice Hemsworth");
+		admin2.setAdminEmail("alice.hemsworth@example.com");
+		admin2.setAdminPassword(5678);
+		admin2.setAdminAddress("5678 Oak Street");
+		admin2.setAdminPhone("098-765-4321");
+		adminService.addAdmin(admin2);
+
+		Admin admin3 = new Admin();
+		admin3.setAdminName("Bob Smith");
+		admin3.setAdminEmail("bob.smith@example.com");
+		admin3.setAdminPassword(9876);
+		admin3.setAdminAddress("1234 Elm Street");
+		admin3.setAdminPhone("123-456-7890");
+		adminService.addAdmin(admin3);
+
+		CarUser carUser1 = new CarUser();
+		carUser1.setCarUserName("Jane Doe");
+		carUser1.setCarUserSurname("Doe");
+		carUser1.setCarUserEmail("jane.doe@example.com");
+		carUser1.setCarUserPassword("password");
+		carUser1.setCarUserAddress("5678 Oak Street");
+		carUser1.setCarUserPhone("098-765-4321");
+		carUserService.addCarUser(carUser1);
+
+		CarUser carUser2 = new CarUser();
+		carUser2.setCarUserName("Alice");
+		carUser2.setCarUserSurname("Wonderland");
+		carUser2.setCarUserEmail("alice.wonderland@example.com");
+		carUser2.setCarUserPassword("password");
+		carUser2.setCarUserAddress("1234 Elm Street");
+		carUser2.setCarUserPhone("123-456-7890");
+		carUserService.addCarUser(carUser2);
+
+		CarUser carUser3 = new CarUser();
+		carUser3.setCarUserName("Bob");
+		carUser3.setCarUserSurname("Builder");
+		carUser3.setCarUserEmail("bob.builder@example.com");
+		carUser3.setCarUserPassword("password");
+		carUser3.setCarUserAddress("5678 Oak Street");
+		carUser3.setCarUserPhone("098-765-4321");
+		carUserService.addCarUser(carUser3);	
 
 		Rental rental1 = new Rental();
 		rental1.setRentalCarId(0);
