@@ -1,19 +1,25 @@
 package ch.fhnw.pizza.business.service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import ch.fhnw.pizza.data.domain.Car;
+import ch.fhnw.pizza.data.domain.Rental;
 import ch.fhnw.pizza.data.repository.CarRepository;
+
+
 
 @Service
 public class CarService {
 
     @Autowired
     private CarRepository carRepository;
+    private RentalService rentalService;
 
     public Car findCarByCarID(Long id) {
         try {
@@ -59,6 +65,11 @@ public class CarService {
         } else
             throw new Exception("Car with id " + id + " does not exist");
     }
+
+
+    
+
+ 
 
 
 

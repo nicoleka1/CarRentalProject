@@ -8,6 +8,12 @@ import org.springframework.stereotype.Repository;
 import ch.fhnw.pizza.data.domain.Rental;
 
 @Repository
+
+
+public interface RentalRepository extends JpaRepository<Rental, Long> {
+    List<Rental> findAllByRentalID(Long rentalID);
+}
+
 //JpaRepository should be typed to the domain class and an ID type
 
 /*
@@ -16,7 +22,3 @@ public interface RentalRepository extends JpaRepository<Rental, Long> {
     List<Rental> findAllByrentalIDContainsIgnoreCase(Long rentalID);
 }
 */
-
-public interface RentalRepository extends JpaRepository<Rental, Long> {
-    List<Rental> findAllByRentalID(Long rentalID);
-}

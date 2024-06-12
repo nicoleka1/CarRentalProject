@@ -2,13 +2,19 @@ package ch.fhnw.pizza.controller;
 
 import ch.fhnw.pizza.business.service.CarService;
 import ch.fhnw.pizza.data.domain.Car;
+import ch.fhnw.pizza.business.service.RentalService;
+import ch.fhnw.pizza.data.domain.Rental;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -17,6 +23,9 @@ public class CarController {
 
     @Autowired
     private CarService carService;
+    
+    @Autowired
+    private RentalService rentalService;
     @GetMapping(path="/", produces = "application/json")
     public List<Car> getCarList() {
         List<Car> carList = carService.getAllCars();
@@ -70,6 +79,22 @@ public class CarController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Car not found");
         }
     }
+
+    @GetMapping(path="/available-cars", produces = "application/json")
+    public List<Car> getAvailableCars(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                      @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
+        List<Car> allCars = carService.getAllCars();
+        List<Car> availableCars = new ArrayList<>();
+
+        for (Car car : allCars) {
+            if (!Arrays.asList(unavailableCarIDs).contains(car.getCarId())) {
+                availableCars.add(car);
+            }
+        }
+        return availableCars;
+    }
+
 
 
  

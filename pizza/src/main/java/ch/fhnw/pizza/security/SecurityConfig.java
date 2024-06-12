@@ -36,19 +36,23 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager(
             User.withUsername("myuser")
-                    .password("{noop}password")
-                    .authorities("READ","ROLE_USER")
-                    .build());
-        
+                .password("{noop}password")
+                .authorities("READ","ROLE_USER")
+                .build(),
+            User.withUsername("myadmin")
+                .password("{noop}password")
+                .authorities("READ","ROLE_ADMIN")
+                .build());
     }
+    
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/authentication/token").hasRole("USER") //only custom users with role USER can request a token
-                        .requestMatchers("/cars/**","/rentals/**","locations/**", "/admin/**", "/caruser/**").permitAll() // all other requests are permitted
+                        .requestMatchers("/authentication/token").hasAnyRole("USER","ADMIN") //only custom users with role USER can request a token
+                        .requestMatchers("/cars/**","/rentals/**","locations/**", "/admin/**").permitAll() // all other requests are permitted
                         .anyRequest().hasAuthority("SCOPE_READ") // only requests with scope inside the JWT token can access the endpoints        
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

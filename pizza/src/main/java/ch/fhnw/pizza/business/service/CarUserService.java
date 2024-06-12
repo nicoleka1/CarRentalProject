@@ -67,8 +67,5 @@ public class CarUserService {
             throw new Exception("CarUser with id " + id + " does not exist");
     }
 
-
-
-
         
 }

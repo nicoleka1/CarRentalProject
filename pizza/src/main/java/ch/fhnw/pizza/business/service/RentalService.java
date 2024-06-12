@@ -1,9 +1,11 @@
 package ch.fhnw.pizza.business.service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class RentalService {
     @Autowired
     private RentalRepository rentalRepository;
 
+    // Returns a rental by ID
     public Rental findRentalByrentalID(Long id) {
         try {
             Rental rental = rentalRepository.findById(id).get();
@@ -28,15 +31,18 @@ public class RentalService {
         }
     }
 
+    // Returns a list of all rentals
     public List<Rental> getAllRentals() {
         List<Rental> rentalList = rentalRepository.findAll();
         return rentalList;
     }
 
+    // Adds a rental
     public Rental addRental(Rental rental) throws Exception {
         return rentalRepository.save(rental);
     }
 
+    // Updates a rental by ID
     public Rental updateRental(Long id, Rental rental) throws Exception {
         Rental rentalToUpdate = rentalRepository.findById(id).get();
         if(rentalToUpdate != null) {
@@ -56,6 +62,7 @@ public class RentalService {
         throw new Exception("Rental with id " + id + " does not exist");
     }
 
+    // Deletes a rental by ID
     public void deleteRental(Long id) throws Exception {
         if(rentalRepository.existsById(id)) {
             rentalRepository.deleteById(id);
@@ -63,51 +70,38 @@ public class RentalService {
             throw new Exception("Rental with id " + id + " does not exist");
     }
 
-    public List<Rental> getAvailableRentals(ChronoLocalDate startDate, ChronoLocalDate endDate) {
-        List<Rental> availableRentals = new ArrayList<>();
-        List<Rental> allRentals = rentalRepository.findAll();
-        
-        for (Rental rental : allRentals) {
-            if (rental.getRentalStartDate().compareTo(endDate) <= 0 && rental.getRentalEndDate().compareTo(startDate) >= 0) {
-                // Rental overlaps with the given time period
-                continue;
+
+    // Returns a list of rentals that are unavailable between the given dates
+    public List<Rental> getUnavailableRentals(LocalDate startDate, LocalDate endDate) {
+        List<Rental> rentalList = rentalRepository.findAll();
+        List<Rental> unavailableRentals = new ArrayList<>();
+    
+        for (Rental rental : rentalList) {
+            if ((startDate.isAfter(rental.getRentalStartDate()) || startDate.isEqual(rental.getRentalStartDate())) &&
+                (startDate.isBefore(rental.getRentalEndDate()) || startDate.isEqual(rental.getRentalEndDate())) ||
+                (endDate.isAfter(rental.getRentalStartDate()) || endDate.isEqual(rental.getRentalStartDate())) &&
+                (endDate.isBefore(rental.getRentalEndDate()) || endDate.isEqual(rental.getRentalEndDate())) ||
+                (startDate.isBefore(rental.getRentalStartDate()) && endDate.isAfter(rental.getRentalStartDate()))) {
+                unavailableRentals.add(rental);
             }
-            availableRentals.add(rental);
         }
+        return unavailableRentals;
+    }
+
+    // Returns a list of rental car IDs that are unavailable between the given dates
+    public Long[] getUnavailableRentalCarIDs(LocalDate startDate, LocalDate endDate) {
+        List<Rental> unavailableRentals = getUnavailableRentals(startDate, endDate);
+        List<Long> rentalCarIDs = new ArrayList<>();
         
-        return availableRentals;
+        for (Rental rental : unavailableRentals) {
+            Long rentalCarID = rental.getRentalCarId();
+            if (!rentalCarIDs.contains(rentalCarID)) {
+                rentalCarIDs.add(rentalCarID);
+            }
+        }
+        return rentalCarIDs.toArray(new Long[0]);
     }
-
-
- /* //Business Logic to get current offer according to the location of the user requesting the menu
-    private String getCurrentOffer(String location) {
-        String currentOffer = "No special offer for your location. Do check back again.";
-        if("Basel".equalsIgnoreCase(location))
-            currentOffer = "10% off on all large pizzas!!!";
-        else if("Brugg".equalsIgnoreCase(location))
-            currentOffer = "Two for the price of One on all small pizzas!!!";
-        return currentOffer;
-    }
-
-    public Rental getRentalByLocation(String location) {
-        String currentBooking = getCurrentBooking(location);
-        List<Pizza> pizzaList = getAllPizzas();
-        Menu menu = new Menu();
-        menu.setPizzaList(pizzaList);
-        menu.setCurrentOffer(currentOffer);
-        return menu;
-    }
-   
-
-    public Menu getMenuByLocation(String location) {
-        String currentOffer = getCurrentOffer(location);
-        List<Pizza> pizzaList = getAllPizzas();
-        Menu menu = new Menu();
-        menu.setPizzaList(pizzaList);
-        menu.setCurrentOffer(currentOffer);
-        return menu;
-    }
-
-    */
-        
 }
+
+
+

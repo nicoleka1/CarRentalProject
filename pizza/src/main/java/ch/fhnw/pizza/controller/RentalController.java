@@ -4,16 +4,16 @@ import ch.fhnw.pizza.business.service.RentalService;
 import ch.fhnw.pizza.data.domain.Rental;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -53,44 +53,19 @@ public class RentalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No rental found with given id");
         }
     }
+/*    @GetMapping(path="/available-rentals", produces = "application/json")
+    public List<Rental> getAvailableRentals(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate) {
+        List<Rental> rentalList = rentalService.getAvailableRentals(startDate, endDate);
+        return rentalList;
+    }*/
 
-   /*@GetMapping(path = "/available-rentals", produces = "application/json")
-    public List<Rental> getAvailableRentals(@RequestParam("startDate") ChronoLocalDate startDate, @RequestParam("endDate") ChronoLocalDate endDate) {
-        List<Rental> rentalList = rentalService.getAllRentals();
-        List<Rental> availableRentals = new ArrayList<>();
-
-        for (Rental rental : rentalList) {
-            if ((rental.getRentalStartDate().isAfter(startDate) || rental.getRentalStartDate().isEqual(startDate)) &&
-                (rental.getRentalEndDate().isBefore(endDate) || rental.getRentalEndDate().isEqual(endDate))) {
-                availableRentals.add(rental);
-            }
-        }
-        return availableRentals;
+    @GetMapping(path="/available-rentals", produces = "application/json")
+    public List<Rental> getUnailableRentals(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        return rentalService.getUnavailableRentals(startDate, endDate);
     }
 
-    */
-
-    @GetMapping(path = "/available-rentals?startDate={startDate}&endDate={endDate}", produces = "application/json")
-    public ResponseEntity getAvailableRentals(@RequestParam("startDate") ChronoLocalDate startDate, @RequestParam("endDate") ChronoLocalDate endDate) {
-        try {
-            List<Rental> rentalList = rentalService.getAllRentals();
-            List<Rental> availableRentals = new ArrayList<>();
-
-            for (Rental rental : rentalList) {
-                if ((rental.getRentalStartDate().isAfter(startDate) || rental.getRentalStartDate().isEqual(startDate)) &&
-                    (rental.getRentalEndDate().isBefore(endDate) || rental.getRentalEndDate().isEqual(endDate))) {
-                    availableRentals.add(rental);
-                }
-            }
-            return ResponseEntity.ok(availableRentals);
-        } catch (Exception e) {
-            // Log the exception message
-            System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
-        }
-    }
-
-
+   
     @PutMapping(path="/{id}", consumes="application/json", produces = "application/json")
     public ResponseEntity updateRental(@PathVariable Long id, @RequestBody Rental rental) {
         try{
@@ -111,6 +86,8 @@ public class RentalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rental not found");
         }
     }
+
+
 
 
 /*
