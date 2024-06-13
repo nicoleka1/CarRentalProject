@@ -39,8 +39,8 @@ L&N CARRENTAL (Car_Rental_Project) is a Web application allowing the car rental 
 11. As a user, I want to see the frequency of cars rented (business logic).
 12. As a user, I want to see information about the company.
 13. As a suer, I want to be able to contact the company.
-5. As a user, I want the appication to validate my credentials during login to ensure security.
-6. As a user, I want to be notified with error messages if I provide invalid credentials during login.
+14. As a user, I want the appication to validate my credentials during login to ensure security.
+15. As a user, I want to be notified with error messages if I provide invalid credentials during login.
 
 #### Some stories as more detailed scenarios:
 
@@ -124,184 +124,123 @@ Alternate Flows:
 Invalid input: If the admin provides invalid credentials, system displays error messages.
 
 
-#### Use Case 2: Admin Management; Add
+#### Use Case 3: Admin Management; Read
 ------------------------------------------------------------
-Actors:          Admin, Application
+Actors:         Admin, Application
 
-Description:     Allows the admin to add business data. 
+Description:    Allows admin to read business data.
 
-Precondition:    Admin is logged in.
+Precondition:   Admin is logged in.
 
-Postcondition:   Desired create operations is executed successfully.  
+Postcondition:  Information is displayed successfully.
 
 Main Flow:
-1. Admin logs 
-2. System validates the credentials.
-3. Admin navigates to the management page.
-4. Admin create, update, delete desired data. 
-
-Alternate Flows: 
-Invalid input: If the admin provides invalid information, system displays error messages. 
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin reads the respectitive business data.
 
 
-#### Use Case 3: User Management (Edit User Information)
+#### Use Case 3: Admin Management; Add
 ------------------------------------------------------------
-Actors:         Admin, System
+Actors:         Admin, Application
 
-Description:    Allows an admin to edit the information of multiple users.
+Description:    Allows admin to add business data.
 
-Precondition:   Admin is logged in and has access to user management functionalities.
+Precondition:   Admin is logged in.
 
-Postcondition:  User information is successfully updated.
+Postcondition:  Create operation is successfully executed.
 
 Main Flow:
 1. Admin navigates to a screen: users, admins, cars, location or rentals.
 2. Admin pushed the add button.
 3. Admin is fowarded to the add screen.
 4. Admin fills in the field in the form.
-5. 
-6. Admin selects a user to edit.
-7. Admin modifies the user's information (e.g., name, email, address).
-8. Admin saves the changes.
- 
-Alternate Flows: 
-Invalid input: If the admin provides invalid information, system displays error messages.
-
-
-#### Use Case 4: Car Mangement (Edit Car Information)
-------------------------------------------------------------
-Actors:         Admin, System
-
-Description:    Allows an admin to edit the information of multiple cars.
-
-Precondition:   Admin is logged in and has access to car management functionalities.
-
-Postcondition:  Car information is successfully updated.
-
-Main Flow:
-1. Admin navigates to the car management section.
-2. Admin selects a car to edit.
-3. Admin modifies the car's information (e.g., make, model, rental rate).
-4. Admin saves the changes.
+5. The form is validated.
+6. The business data is added with the new entry.
 
 Alternate Flows: 
 Invalid input: If the admin provides invalid information, system displays error messages.
 
 
-#### Use Case 5: User Registration
+#### Use Case 4: Admin Management; Update
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         Admin, Application
 
-Description:    Allows a user to create a new account on the car rental website.
+Description:    Allows admin to update business data.
 
-Precondition:   User navigates to the registration page.
+Precondition:   Admin is logged in.
 
-Postcondition:  User account is created successfully.
+Postcondition:  Update operation is successfully executed.
 
 Main Flow:
-1. User provides personal information.
-2. System validates the information.
-3. System creates a new user account.
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin clicks on the row that should be updated.
+3. Side panel on the right opens.
+6. Admin fills in the field in the form.
+7. Admin pushed the update button.
+8. The form is validated.
+9. The business data is updated with the new entry.
 
 Alternate Flows: 
-Invalid input: If the user provides invalid information, system displays error messages.
+Invalid input: If the admin provides invalid information, system displays error messages.
 
 
-#### Use Case 6: Search for Available Cars
+#### Use Case 4: Admin Management; Delete
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         Admin, Application
 
-Description:    Allows a user to search for available cars based on specified criteria.
+Description:    Allows admin to delete business data.
 
-Precondition:   User is logged in and navigates to the search page.
+Precondition:   Admin is logged in.
+
+Postcondition:  Delete operation is successfully executed.
+
+Main Flow:
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin clicks on the row that should be deleted.
+3. Side panel on the right opens.
+6. Admin pushed the delete button.
+7. The form is validated.
+8. The business data is deleted.
+
+Alternate Flows: 
+-
+
+
+#### Use Case 5: Search for Available Cars
+------------------------------------------------------------
+Actors:         User, Application
+
+Description:    Allows a user to search for available cars based on specified period of time.
+
+Precondition:   User is logged in and navigates to the available cars screen.
 
 Postcondition:  User views a list of available cars matching the search criteria.
 
 Main Flow:
-1. User specifies search criteria.
-2. System retrieves and displays available cars.
+1. User specifies search criteria with a start date and an end date.
+2. Application retrieves and displays available cars.
 
 Alternate Flows: 
 No cars available: If no cars match the search criteria, system displays a message.
 
 
-#### Use Case 7: Rent a Car
+#### Use Case 6: Rental Frequency Cars
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         User, Application
 
-Description:    Allows a user to rent a car from the available options.
+Description:    Allows a user to see the rentalfrequency of cars.
 
-Precondition:   User has selected a car for rental.
+Precondition:   User is logged in and navigates to the rental frequency screen.
 
-Postcondition:  User completes the rental process and receives confirmation.
+Postcondition:  User views the desired information.
 
 Main Flow:
-1. User selects a car for rental.
-2. User specifies rental details (e.g., rental dates, additional options).
-3. User confirms the rental.
-4. System processes the rental request.
-5. System generates a rental confirmation.
-6. User receives a confirmation of the rental.
+2. Application retrieves and displays the information.
 
 Alternate Flows: 
-None
+No data available: If no data is available, system displays a message.
 
 
-#### Use Case 8: View Payment Details
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the payment details associated with a rental.
-
-Precondition:   User is logged in and navigates to the rental details page.
-
-Postcondition:  User views the payment details of the rental.
-
-Main Flow:
-1. User selects a rental to view details.
-2. User navigates to the payment details section.
-3. System retrieves and displays the payment details associated with the rental.
-
-Alternate Flows: 
-No payment details: If there are no payment details associated with the rental, system displays a message.
-
-
-#### Use Case 9: View Rental Location Details
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the details of the location where a rental takes place.
-
-Precondition:   User is logged in and navigates to the rental details page.
-
-Postcondition:  User views the location details of the rental.
-
-Main Flow:
-1. User selects a rental to view details.
-2. User navigates to the location details section.
-3. System retrieves and displays the location details where the rental takes place.
-
-Alternate Flows: 
-Location details unavailable: If there are no location details associated with the rental, system displays a message.
-
-
-#### Use Case 10: View Available Cars at Location
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the available cars at a specific rental location.
-
-Precondition:   User is logged in and navigates to the location details page.
-
-Postcondition:  User views the available cars at the location.
-
-Main Flow:
-1. User selects a location to view details.
-2. User navigates to the available cars section.
-3. System retrieves and displays the list of available cars at the location.
-
-Alternate Flows: 
-No available cars: If there are no cars available at the location, system displays a message.
 
 ### Design
 > ***
