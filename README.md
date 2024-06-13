@@ -243,13 +243,31 @@ No data available: If no data is available, system displays a message.
 
 
 ### Design
-> ***
+> This section outlines the design principles and guidelines that ensure our corporate identiy is consistenly reflected across our application. The L&N CARRENTAL logo features a sleek, modern car silhouette combined with the company name. The logo colors are grey and two nuances of turquoise, reflecting our brand’s identity.
+>
+> LOGO
+>
+> #### Color Scheme
+> The primary colors are grey and turquoise the secondary colors are shades of dark turquoise. Some accent colors in turquoide are additionally used.
+>
+> #### Graphics
+> We used custom-designed icons in turquoise shades to maintain consistency. Icons should be minimalistic and align with the overall dark theme of the website. High-quality images of cars with a dark filter overlay to blend seamlessly into the dark-themed layout.
+>
+> #### Layout
+> There is a fixed horizontal navigation on the top. With a home screen and to sections "UserSpace" and "AdminSpace. The two space section are nested navigation element which provide by clicking further screens.
+>
+> #### User Esperience (UX)
+> It is ensured that the website is fully responsive, providing a seamless experience across all devices. The navigation is keept simple and intuitive, with clear labels. Buttons, forms, and other interactive elements should have clear, responsive feedback.
+>
+> Our dark-themed, turquoise-accented design provides a modern and elegant user experience, while our commitment to usability and accessibility ensures that every visitor can easily find and rent their perfect car. 
 
 ### Wireframe
-> ***
+> Here is a small overview of our wireframes which we have created with draw.io:
+>
+> WIREFRAMES
 
 ### Prototype Design
-> ***
+> The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
 
 ### Domain Design
 
@@ -257,17 +275,16 @@ We created an Entity-Relationship Model in Visual Paradigm.
 
 #### Entities
 
-Admin: Represents the administrators of the website.
+Admins: Represents the administrators of the website.
 
-User: Represents individuals who interact with the website.
+Users: Represents individuals who interact with the application.
 
-Car: Represents the vehicles available for rental.
+Cars: Represents the vehicles for rental.
 
-Rental Represents a rental transaction.
+Locations: Represents the rental locations where cars can be rented.
 
-Payment: Represents a payment transaction associated with a rental.
+Rentals: Represents a rental transaction.
 
-Location: Represents the rental locations where cars are available.
 
 #### Relationships
 
@@ -280,14 +297,8 @@ One-to-Many relationship indicates that an admin can edit multiple cars.
 ##### User – Rental (MakeRental)
 One-to-Many relationship indicating that a user can make multiple rentals, but each rental is associated with only one user.
 
-##### User – Payment (MakePayment)
-One-to-Many relationship indicates that a user can make multiple payments, but each payment is made by only one user.
-
 ##### Car – Rental (IsRentedFor)
 One-to-Many relationship indicating that a car can be rented multiple times, but each rental is associated with only one car.
-
-##### Rental – Payment (IsAssociatedWith)
-One-to-One relationship indicating that each rental has exactly one payment associated with it.
 
 ##### Rental – Location (TakesPlaceAt)
 Many-to-One relationship: Many rentals can take place ate the same rental location, but each rental only takes place at  only one location.
@@ -299,29 +310,54 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 
 ![](images/EntityRelationshipCarRental2.0.png)
 
-### Business Logic 
-> ***
+### Business Logic
+> Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
+>
+> Based on UC-5, there will be all available cars in a specified period of time:
+>
+> ...
+>
+> Based on UC-6, there will be information about the frequency of rented cars (entities involved: cars and rentals):
+>
+> ...
 
 ## Implementation
-> ***
+> To achieve the overall project goals for L&N CARRENTAL, we utilized a diverse set of applications and technologies, each serving a specific purpose in the development and enhancement of our website. We userd Visual Paradigm to create the enity relationship model. With the support of the tool draw.io we have worked out our wireframes. The logo was designe with Microsoft Powerpoint. We have created a group workspace in postman to test our APIs. GitHub was used for version control, code repository management, and collaboration among the development in our small team. GitHub Codespaces provided a cloud-based development environment that allowed us to develop and test code from anywhere, ensuring consistent setups and configurations. GitHub Copilot was used to enhance developer productivity by providing AI-powered code suggestions and completions, speeding up our coding process and reducing errors.
 
 ### Backend Technology
-> ***
+> As suggested we cloned the Pizza Reference Project to start, so did we. Our Web application relies on Spring Boot and the dependency to Spring Data,, Java Persistence API (JPA) and H2 Database. To bootstrap the application the Spring Initializr has been used.
+>
+> DB ---
+>
+> SWAGGER ---
 
 ### Frontend Technology
-> ***
+> Our Web application was developed using Budibase.
+>
+> --- Describe your views and what APIs is used on which view.
+> 
 
 ## Execution
 > ***
+
+## Deployment to a PaaS
+> Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
 
 ## Project Management
 > ***
 
 ### Roles
-- developer: Nicole Kaufmann
-- developer: Lea Gauch
 
-### Milestones
+- Nicole Kaufmann
+  - Back-end developer
+  - Consulting front-end developer
+
+- Lea Gauch
+  - Frond-end developer
+  - Consulting back-end developer
+     
+
+### Milestones during the project were:
 1. **Analysis**: Scenario ideation, use case analysis and user story writing. (Submission 2024-04-01)
 2. **Prototype Design**: Creation of wireframe and prototype.
 3. **Domain Design**: Definition of domain model. (Submission 2024-04-01)
