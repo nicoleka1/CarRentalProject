@@ -1,5 +1,5 @@
 # Car_Rental_Project_Internet_Technology
-The fundamental concept of this group project is to create a functional Web application to practise and use the knowledge we have learned from the lectures and e-lectures.
+Our fundamental concept of this group project is to create a functional Web application to practise and use the knowledge we have learned from the lectures and e-lectures.
 
 #### Contents:
 - [Analysis](#analysis)
@@ -22,116 +22,120 @@ In our analysis, we specify the following sections to ensure a comprehensive und
 
 ### Scenario Ideation
 
-CarRentalPortal (Car_Rental_Project_Internet_Technology) is a tool allowing the car rental manager (Role: Admin) and the customers (Role: User) to manage car rental operations.
+L&N CARRENTAL (Car_Rental_Project) is a Web application allowing the car rental manager (Role: Admin) and the customers (Role: User) to manage car rental operations.
 
+### User Story Writing
 
+1. As an admin, I want to have a Web application so that I can use it on different mobile devices and on desktop computers.
+2. As an admin, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+3. As an admin, I want to use list views so that I can explore and read my business data (get).
+4. As an admin, I want to update (update) and create (post) views so that I can maintain my business data.
+5. As an admin, I want to delete (delete) specific data entries to maintain my business data.
+6. As an admin, I want the system to validate my credentials during login to ensure security.
+7. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
+8. As a user, I want to have a Web applicatioon so that I can use it on different mobile devices and on desktop computers.
+9. As a user, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+10. As a user, I want to search for available cars in a specific period of time (business logic).
+11. As a user, I want to see the frequency of cars rented (business logic).
+12. As a user, I want to see information about the company.
+13. As a suer, I want to be able to contact the company.
+5. As a user, I want the appication to validate my credentials during login to ensure security.
+6. As a user, I want to be notified with error messages if I provide invalid credentials during login.
 
-#### Scenario 1: Admin Overview
+#### Some stories as more detailed scenarios:
+
+#### Scenario 1: Admin Login
 ------------------------------------------------------------
 Descripiton: The admin logs in to see all the business data.
 
 Steps:
-1. Admin navigates to the login page.
-2. Admin enters the credentials (AdminID & password)
+1. Admin navigates to the login screen.
+2. Admin enters the credentials (username & password)
 3. System verifies the credentials.
-4. Admin can navigate to the business data section.
-5. Admin logs out. 
+4. Admin can navigate to the business data screens.
+5. Admin logs out.
 
 
 #### Scenario 2: Admin Management
 ------------------------------------------------------------
-Description: The admin wants to maintain the DB, such as such as user management, car inventory (add or delete), car location changes, and car availability. 
+Description: The admin wants to maintain the DB, such as such as user management, admmin management, car inventory management, location management and rental management. 
 
 Steps: 
-1. Admin navigates to the login page.
-2. Admin enters the credentials (AdminID & password)
+1. Admin navigates to the login sceen.
+2. Admin enters the credentials (username & password)
 3. System verifies the credentials.
-4. Admin can navigate to the management section.
-5. Admin can CRUD inventory, locations, availability.
+4. Admin can navigate int the "AdminSpace" with five management screens: users, admins, cars, locations and rentals.
+5. Admin can make CRUD-operations.
 6. Admin logs out. 
 
 
 #### Scenario 3: User Registration
 ------------------------------------------------------------
-Description: A new user wants to register an account on the car rental website. 
+Descripiton: The user logs in to see business data.
 
-Steps: 
-1. User navigates to the website's registration page.
-2. User fills out the registration form with their personal information.
-3. User submits the registration form.
-4. System validates the information and creates a new user account.
-5. User receives a confirmation message and is redirected to the login page.
+Steps:
+1. User navigates to the login screen.
+2. User enters the credentials (username & password)
+3. System verifies the credentials.
+4. User can navigate in the "UserSpace".
+5. User logs out.
 
 
 #### Scenario 4: Searching for Available Cars
 ------------------------------------------------------------
-Description: A registered user wants to search for available cars for rental. 
+Description: A logged in user wants to search for available cars for rental.
 
 Steps: 
-1. User logs in to the car rental website.
-2. User navigates to the search page.
-3. User selects the desired location, rental dates, and any other search criteria.
-4. User submits the search request.
-5. System retrieves and displays a list of available cars matching the search criteria. 
+1. User navigates to the available cars screen.
+2. User picks a start and and end date of the rental.
+3. User submits the search request (refresh).
+5. Application retrieves and displays a list of available cars matching the search criteria.
+6. User logs out.
 
 
-#### Scenario 5: Renting a Car
+#### Scenario 5: Frequency of Rental
 ------------------------------------------------------------
-Description: A registered user wants to rent a car from the available options. 
+Description: A logged in user want to see the frequency of cars rented.
 
 Steps: 
-1. User selects a car from the list of available cars.
-2. User specifies the rental dates and any additional rental options.
-3. User confirms the rental request.
-4. System processes the rental request, calculates the total cost, and checks for availability.
-5. User makes the payment to confirm the rental.
-6. System generates a rental confirmation and updates the car's availability status. 
-
-
-### User Story Writing
-
-1. As an admin, I want the system to validate my credentials during login to ensure security.
-2. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
-3. As an admin, I want to log in to the system to perform create, update, and delete operations.
-4. As an admin, I want to create new data, update existing data, and delete unwanted data on the platform.
-5. As a new user, I want to register an account to access the car rental services.
-6. As a registered user, I want to search for available cars based on my preferred location and dates.
-7. As a registered user, I want to rent a car by selecting from the available options and specifying rental details.
+1. User navigates to the frequency of rental screen.
+2. An overview of the frequency of rentals is provided.
+3. User logs out.
 
 
 ### Use Case
 
-#### Use Case 1: Admin Overview
+#### Use Case 1: Admin Login
 ------------------------------------------------------------
-Actors:         Admin, System
+Actors:         Admin, Application
 
-Description:    Allows the admin to get an overview of the business data.
+Description:    Allows the admin to log in.
 
-Precondition:   Admin navigates to the login page.
+Precondition:   Admin navigates to the login screen.
 
-Postcondition:  Could get an overview of the current data.
+Postcondition:  Admin is logged in.
 
 Main Flow: 
-1. Admin logs in.
+1. Admin enters credentials (username & password).
 2. System validates the credentials.
-3. Admin navigates to the overview page. 
+3. Credentials are correct.
 
 Alternate Flows: 
 Invalid input: If the admin provides invalid credentials, system displays error messages.
 
 
-#### Use Case 2: Admin Management
+#### Use Case 2: Admin Management; Add
 ------------------------------------------------------------
-Actors:          Admin, System 
+Actors:          Admin, Application
 
-Description:     Allows the admin to manage the platform. 
+Description:     Allows the admin to add business data. 
 
-Precondition:    Admin navigates to the login page. 
+Precondition:    Admin is logged in.
 
-Postcondition:   Desired CRUD operations are executed successfully.  
+Postcondition:   Desired create operations is executed successfully.  
 
 Main Flow:
-1. Admin logs in.
+1. Admin logs 
 2. System validates the credentials.
 3. Admin navigates to the management page.
 4. Admin create, update, delete desired data. 
@@ -151,10 +155,14 @@ Precondition:   Admin is logged in and has access to user management functionali
 Postcondition:  User information is successfully updated.
 
 Main Flow:
-1. Admin navigates to the user management section.
-2. Admin selects a user to edit.
-3. Admin modifies the user's information (e.g., name, email, address).
-4. Admin saves the changes.
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin pushed the add button.
+3. Admin is fowarded to the add screen.
+4. Admin fills in the field in the form.
+5. 
+6. Admin selects a user to edit.
+7. Admin modifies the user's information (e.g., name, email, address).
+8. Admin saves the changes.
  
 Alternate Flows: 
 Invalid input: If the admin provides invalid information, system displays error messages.
