@@ -81,8 +81,8 @@ public class CarController {
     }
 
     @GetMapping(path="/available-cars", produces = "application/json")
-    public List<Car> getAvailableCars(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-                                      @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+    public List<Car> getAvailableCars(@RequestParam("startDate") LocalDate startDate,
+                                      @RequestParam("endDate") LocalDate endDate) {
         Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
         List<Car> allCars = carService.getAllCars();
         List<Car> availableCars = new ArrayList<>();

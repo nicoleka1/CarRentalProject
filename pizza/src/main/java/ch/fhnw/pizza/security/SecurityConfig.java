@@ -52,7 +52,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests( auth -> auth
                         .requestMatchers("/authentication/token").hasAnyRole("USER","ADMIN") //only custom users with role USER can request a token
-                        .requestMatchers("/cars/**","/rentals/**","locations/**", "/admin/**").permitAll() // all other requests are permitted
+                        .requestMatchers("/cars/**","/caruser/**","/rentals/**","locations/**", "/admin/**","/**").permitAll() // all other requests are permitted
                         .anyRequest().hasAuthority("SCOPE_READ") // only requests with scope inside the JWT token can access the endpoints        
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
