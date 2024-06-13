@@ -133,6 +133,15 @@ public class CarApplication {
 		car9.setCarLicencePlate("AG 456 321");
 		car9.setCarRentalRate(120L);
 		carService.addCar(car9);
+		
+		Car car10 = new Car();
+		car10.setCarBrand("Ford");
+		car10.setCarModel("Focus");
+		car10.setCarYear(2017);
+		car10.setCarColor("Blue");
+		car10.setCarLicencePlate("AG 789 456");
+		car10.setCarRentalRate(130L);
+		carService.addCar(car10);
 
 
 		Admin admin1 = new Admin();
