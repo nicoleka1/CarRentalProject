@@ -86,12 +86,15 @@ public class CarController {
         Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
         List<Car> allCars = carService.getAllCars();
         List<Car> availableCars = new ArrayList<>();
+        System.out.println("startDate: " + startDate);
+        System.out.println("endDate: " + endDate);
 
         for (Car car : allCars) {
             if (!Arrays.asList(unavailableCarIDs).contains(car.getCarId())) {
                 availableCars.add(car);
             }
         }
+        System.out.println("availableCars: " + availableCars);
         return availableCars;
     }
 

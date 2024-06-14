@@ -29,9 +29,11 @@ public class AuthenticationController {
 
     @PostMapping("/token")
     public String token(Authentication authentication) {
+        System.out.println("Test AuthenticationController");
         if (authentication.isAuthenticated()) { //requires a valid user (created in SecurityConfig.java)
             return tokenService.generateToken(authentication);
         } else {
+            System.out.println("invalid user request !");
             throw new UsernameNotFoundException("invalid user request !");
         }
     }
