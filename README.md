@@ -351,64 +351,157 @@ Then, the following further dependencies are added to the project `pom.xml`:
 ```
 
 ### Frontend Technology
-> Our Web application was developed using Budibase.
->
-> Our views and which APIs were used in which view are described below.
->
-> #### Home
->  - API: GET 00_Welcome_Page - {{URL}}
-> On our Home (/home) screen our customers and admins are welcomed.
-> 
-> ![](images/HomePage.png)
->
-> #### User
-> The drop-down menu "UserSpace" allows the user to navigate to different screens.
-> ![](images/NavigationUserSpace1.png)
->
-> ##### Home (/userhome --> /availablecars or | --> /contactus)
-> The customer gets information about the page. He can directly navigate to Available Cars or Contact Us.
+Our Web application was developed using Budibase.
 
-> ##### Login (/loginuser)
-> - API: POST 01_auth_my_user - {{URL}}/authentication/token
-> The user is provided with a login form. The user can log in with username and password. Through the POST method the token is retrieved and should be stored to enable only the sections on the page which are configured for the user. If no input is made in the username field or password field a validation error message pops up.
+Our views and which APIs were used in which view are described below.
 
-> ##### Available Cars (/availablecars)
-> - API: GET 07_GetAvailableCars with Bindings - {{URL}}/cars/available-cars?startDate={{Binding.startDate}}&endDate={{Binding.endDate}}
-> The user can pick a start and an end date for the rental. The selected dates are stored in a state and binded to the filter parameters in the query. In the backend on Postman and on Budibase it is working properly. In the frontend the state is updated but the query is not able to accept the state. We are thinking to solve the issue with an JavaScript code but we did not figured out yet. There is a table provided to list all available cars in the respectitive period of time.
+#### Home
+- API: GET 00_Welcome_Page - {{URL}}
+  
+On our Home (/home) screen our customers and admins are welcomed.
+![](images/HomePage.png)
+
+#### User
+The drop-down menu "UserSpace" allows the user to navigate to different screens.
+![](images/NavigationUserSpace1.png)
+
+##### Home (/userhome --> /availablecars || --> /contactus)
+The customer gets information about the page. He can directly navigate to Available Cars or Contact Us.
+
+##### Login (/loginuser)
+- API: POST 01_auth_my_user - {{URL}}/authentication/token
+
+The user is provided with a login form. The user can log in with username and password. Through the POST method the token is retrieved and should be stored to enable only the sections on the page which are configured for the user. If no input is made in the username field or password field a validation error message pops up.
+
+##### Available Cars (/availablecars)
+- API: GET 07_GetAvailableCars with Bindings - {{URL}}/cars/available-cars?startDate={{Binding.startDate}}&endDate={{Binding.endDate}}
+
+The user can pick a start and an end date for the rental. The selected dates are stored in a state and binded to the filter parameters in the query. In the backend on Postman and on Budibase it is working properly. In the frontend the state is updated but the query is not able to accept the state. We are thinking to solve the issue with an JavaScript code but we did not figured out yet. There is a table provided to list all available cars in the respectitive period of time.
  
-> ##### Contact Us (/contactus)
-> Several information is provided to contact us as well as a contact form (no functional implementation).
-> 
-> ##### About Us (/aboutus)
-> Several information about our company is provided.
->
-> #### Admin
-> The drop-down menu "AdminSpace" allows the user to navigate to different screens.
-> ![](images/NavigationAdminSpace.png)
+##### Contact Us (/contactus)
+Several information is provided to contact us as well as a contact form (no functional implementation).
+ 
+##### About Us (/aboutus)
+Several information about our company is provided.
+
+#### Admin
+The drop-down menu "AdminSpace" allows the user to navigate to different screens.
+![](images/NavigationAdminSpace.png)
 
 ##### Login (/adminlogin)
 - API: POST 01_auth_my_admin - {{URL}}/authentication/token
+
 The admin is provided with a login form. The admin can log in with username and password. Through the POST method the token is retrieved and should be stored to enable only the sections on the page which are configured for the user. If no input is made in the username field or password field a validation error message pops up.
  
 ##### Users (/users --> /adduser)
 /users
 - API: GET 03_GetAllCarUser - {{URL}}/caruser/
-The admin can see all currently registered users. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addusers screen.
+  
+The admin can see all currently registered users. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /adduser screen.
 
 /adduser
 - API: POST 03_CreateNewCarUser with Bindings - {{URL}}/caruser/
-The admin can fill in a form to add a new user. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admins is navigated back to the /users screen. If decides not to record a new user, there is a cancel button to be navigaed back to the /users screen. Back on the /users screen the table is refreshed with the new user.
+
+The admin can fill in a form to add a new user. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /users screen. If the admin decides not to record a new user, there is a cancel button to be navigaed back to the /users screen. Back on the /users screen the table is refreshed with the new user.
 
 /users
-> - API:  03_UpdateCarUserByID with Bindings - {{URL}}/caruser/
+- API:  PUT 03_UpdateCarUserByID with Bindings - {{URL}}/caruser/
+  
+The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
+
+/users
+- API: DELETE 03_DeleteCarUserByID with Bindings - {{URL}}/caruser/{{carUserID}}
+
+The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
+
+##### Admins (/admins --> /addadmin)
+/admins
+- API: GET 02_GetAllAdmins - {{URL}}/admin/
+  
+The admin can see all currently registered admins. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addadmin screen.
+
+/addadmin
+- API: POST 02_CreateNewAdmin with Bindings - {{URL}}/admin/
+
+The admin can fill in a form to add a new admin. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /users screen. If the admin decides not to record a new admin, there is a cancel button to be navigated back to the /admins screen. Back on the /admins screen the table is refreshed with the new admin.
+
+/admins
+- API:  PUT 02_UpdateAdminByID with Bindings - {{URL}}/admin/{{adminId}}
+
+The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
+
+/admins
+- API: DELETE 02_DeleteAdminByID with Bindings - {{URL}}/admin/{{adminId}}
+
+The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
+
+##### Cars (/cars --> /addcar)
+/cars
+- API: GET 04_GetAllCars - {{URL}}/cars/
+  
+The admin can see all currently registered cars. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addcar screen.
+
+- API: GET 08_GetCarsWithDaysOfRent - {{URL}}/cars/rented-days
+
+An overview for the admin is provided to see how many days the cars of the fleet was rented over the existence of our business.
+
+/addcar
+- API: POST 04_CreateNewCar with Bindings - {{URL}}/cars
+
+The admin can fill in a form to add a new car. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /cars screen. If the admin decides not to record a new car, there is a cancel button to be navigated back to the /cars screen. Back on the /cars screen the table is refreshed with the new car.
+
+/cars
+- API:  PUT 04_UpdateCarByID with Bindings - {{URL}}/cars/{{carId}}
+
+The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
+
+/cars
+- API: DELETE 04_DeleteCarByID with Bindings - {{URL}}/cars/{{carId}}
+
+The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
+
+##### Locations (/locations --> /addlocation)
+/locations
+- API: GET 05_GetAllLocations - {{URL}}/locations/
+  
+The admin can see all currently registered locations. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addlocation screen.
+
+/addlocation
+- API: POST 05_CreateNewLocation with Bindings - {{URL}}/locations/
+
+The admin can fill in a form to add a new location. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /locations screen. If the admin decides not to record a new location, there is a cancel button to be navigated back to the /locations screen. Back on the /locations screen the table is refreshed with the new location.
+
+/locations
+- API:  PUT 05_UpdateLocationByID with Bindings - {{URL}}/locations/{{locationId}}
+
+The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
+
+/locations
+- API: DELETE 05_DeleteLocationByID with Bindings - {{URL}}/locations/{{locationId}}
+
+The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
 
+##### Rentals (/rentals --> /addrental)
+/rentals
+- API: GET 06_GetAllRentals - {{URL}}/rentals/
+  
+The admin can see all currently registered rentals. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addrental screen.
 
-> 
-> ##### Admins (/admins --> /addadmins)
-> ##### Cars (/cars --> /addcars)
-> ##### Locations (/locations --> /addlocations)
-> ##### Rentals (/rentals --> /addrentals)
+/addrental
+- API: POST 06_CreateNewRental with Bindings - {{URL}}/rentals/
+
+The admin can fill in a form to add a new rental. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /rentals screen. If the admin decides not to record a new location, there is a cancel button to be navigated back to the /rentals screen. Back on the /rentals screen the table is refreshed with the new location.
+
+/rentals
+- API:  PUT 06_UpdateRentalByID with Bindings - {{URL}}/rentals/{{rentalID}}
+
+The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
+
+/rentals
+- API: DELETE 06_DeleteRentalByID with Binding - {{URL}}/rentals/{{rentalId}}
+
+The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
 ## Execution
 > To run our application the URL in Budibase must be changed. Start the codespace in CarRentalPorject and run the CarApplication.java. The port 8080 must be set to public. And the URL can be set as a stati variable in Budibase.
