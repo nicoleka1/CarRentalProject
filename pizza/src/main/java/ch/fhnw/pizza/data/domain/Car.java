@@ -37,9 +37,13 @@ public class Car {
     @Column(name = "car_rental_rate")
     private Long carRentalRate;
 
-    
+    @Column(name = "car_rental_count")
+    private int carRentalCount;
 
  
+
+
+
     @ManyToOne
     private Rental rental;
 
@@ -97,6 +101,14 @@ public class Car {
 
     public void setCarRentalRate(Long carRentalRate) {
         this.carRentalRate = carRentalRate;
+    }
+
+    public int getCarRentalCount() {
+        return carRentalCount;
+    }
+
+    public void setCarRentalCount(int carRentalCount) {
+        this.carRentalCount = carRentalCount;
     }
 
         

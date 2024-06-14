@@ -98,6 +98,16 @@ public class CarController {
         return availableCars;
     }
 
+    @GetMapping(path="/rented-days", produces = "application/json")
+    public List<Car> getCarDetailsWithRentedDays(){
+        List<Car> carList = carService.getCarDetailsWithRentedDays();
+        return carList;
+    }
+    
+
+
+    
+
     /*@GetMapping(path="/rented-days", produces = "application/json")
     public int[] getRentedDaysByAllCars() {
         List<Rental> rentalList = rentalService.getAllRentals();

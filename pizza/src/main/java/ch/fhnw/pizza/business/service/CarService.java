@@ -1,6 +1,8 @@
 package ch.fhnw.pizza.business.service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import ch.fhnw.pizza.data.domain.Car;
 import ch.fhnw.pizza.data.domain.Rental;
+import ch.fhnw.pizza.business.service.RentalService;
+import ch.fhnw.pizza.data.repository.RentalRepository;
+
 import ch.fhnw.pizza.data.repository.CarRepository;
 
 
@@ -19,8 +24,10 @@ public class CarService {
 
     @Autowired
     private CarRepository carRepository;
-    private RentalService rentalService;
 
+    @Autowired
+    private RentalRepository rentalRepository;
+    
     public Car findCarByCarID(Long id) {
         try {
             Car car = carRepository.findById(id).get();
@@ -66,11 +73,31 @@ public class CarService {
             throw new Exception("Car with id " + id + " does not exist");
     }
 
+    public List<Car> getCarDetailsWithRentedDays() {
+        List<Car> carList = carRepository.findAll();
+        List<Car> carDetailsList = new ArrayList<>();
+        List<Rental> rentalList = rentalRepository.findAll();
 
-    
+        for (Car car : carList) {
+            Long carID = car.getCarId();
+            int rentedDays = 0;
 
- 
+            for (Rental rental : rentalList) {
+                Long rentalCarID = rental.getRentalCarId();
+                LocalDate startDate = rental.getRentalStartDate();
+                LocalDate endDate = rental.getRentalEndDate();
 
+                if (carID.equals(rentalCarID)) {
+                    rentedDays += ChronoUnit.DAYS.between(startDate, endDate) + 1;
+                }
+            }
+
+            car.setCarRentalCount(rentedDays);
+            carDetailsList.add(car);
+        }
+
+        return carDetailsList;
+    }
 
 
  /* //Business Logic to get current offer according to the location of the user requesting the menu

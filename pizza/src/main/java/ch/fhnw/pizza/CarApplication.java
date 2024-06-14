@@ -196,7 +196,7 @@ public class CarApplication {
 		carUserService.addCarUser(carUser3);	
 
 		Rental rental1 = new Rental();
-		rental1.setRentalCarId(4);
+		rental1.setRentalCarId(5);
 		rental1.setRentalUserID(1);
 		rental1.setRentalStartDate(LocalDate.of(2021, 10, 1));
 		rental1.setRentalEndDate(LocalDate.of(2021, 10, 5));
@@ -207,12 +207,12 @@ public class CarApplication {
 		rental2.setRentalCarId(5);
 		rental2.setRentalUserID(1);
 		rental2.setRentalStartDate(LocalDate.of(2021, 5, 1));
-		rental2.setRentalEndDate(LocalDate.of(2021, 5, 6));
+		rental2.setRentalEndDate(LocalDate.of(2021, 5, 4));
 		rental2.setRentalTotalCost(800L);
 		rentalService.addRental(rental2);
 
 		Rental rental3 = new Rental();
-		rental3.setRentalCarId(5);
+		rental3.setRentalCarId(4);
 		rental3.setRentalUserID(1);
 		rental3.setRentalStartDate(LocalDate.of(2021, 5, 5));
 		rental3.setRentalEndDate(LocalDate.of(2021, 5, 8));
@@ -220,12 +220,100 @@ public class CarApplication {
 		rentalService.addRental(rental3);
 
 		Rental rental4 = new Rental();
-		rental4.setRentalCarId(5);
+		rental4.setRentalCarId(3);
 		rental4.setRentalUserID(1);
 		rental4.setRentalStartDate(LocalDate.of(2021, 5, 17));
 		rental4.setRentalEndDate(LocalDate.of(2021, 5, 17));
 		rental4.setRentalTotalCost(200L);
 		rentalService.addRental(rental4);
+
+		Rental rental5 = new Rental();
+		rental5.setRentalCarId(5);
+		rental5.setRentalUserID(1);
+		rental5.setRentalStartDate(LocalDate.of(2021, 6, 1));
+		rental5.setRentalEndDate(LocalDate.of(2021, 6, 5));
+		rental5.setRentalTotalCost(900L);
+		rentalService.addRental(rental5);
+
+		Rental rental6 = new Rental();
+		rental6.setRentalCarId(5);
+		rental6.setRentalUserID(1);
+		rental6.setRentalStartDate(LocalDate.of(2021, 7, 1));
+		rental6.setRentalEndDate(LocalDate.of(2021, 7, 5));
+		rental6.setRentalTotalCost(950L);
+		rentalService.addRental(rental6);
+
+		Rental rental7 = new Rental();
+		rental7.setRentalCarId(1);
+		rental7.setRentalUserID(1);
+		rental7.setRentalStartDate(LocalDate.of(2021, 8, 1));
+		rental7.setRentalEndDate(LocalDate.of(2021, 8, 5));
+		rental7.setRentalTotalCost(800L);
+		rentalService.addRental(rental7);
+
+		Rental rental8 = new Rental();
+		rental8.setRentalCarId(2);
+		rental8.setRentalUserID(1);
+		rental8.setRentalStartDate(LocalDate.of(2021, 9, 1));
+		rental8.setRentalEndDate(LocalDate.of(2021, 9, 5));
+		rental8.setRentalTotalCost(900L);
+		rentalService.addRental(rental8);
+
+		Rental rental9 = new Rental();
+		rental9.setRentalCarId(3);
+		rental9.setRentalUserID(1);
+		rental9.setRentalStartDate(LocalDate.of(2021, 10, 1));
+		rental9.setRentalEndDate(LocalDate.of(2021, 10, 5));
+		rental9.setRentalTotalCost(1000L);
+		rentalService.addRental(rental9);
+
+		Rental rental10 = new Rental();
+		rental10.setRentalCarId(4);
+		rental10.setRentalUserID(1);
+		rental10.setRentalStartDate(LocalDate.of(2021, 11, 1));
+		rental10.setRentalEndDate(LocalDate.of(2021, 11, 5));
+		rental10.setRentalTotalCost(1100L);
+		rentalService.addRental(rental10);
+
+		Rental rental11 = new Rental();
+		rental11.setRentalCarId(10);
+		rental11.setRentalUserID(1);
+		rental11.setRentalStartDate(LocalDate.of(2021, 12, 1));
+		rental11.setRentalEndDate(LocalDate.of(2021, 12, 5));
+		rental11.setRentalTotalCost(1200L);
+		rentalService.addRental(rental11);
+
+		Rental rental12 = new Rental();
+		rental12.setRentalCarId(6);
+		rental12.setRentalUserID(1);
+		rental12.setRentalStartDate(LocalDate.of(2022, 1, 1));
+		rental12.setRentalEndDate(LocalDate.of(2022, 1, 5));
+		rental12.setRentalTotalCost(1300L);
+		rentalService.addRental(rental12);
+
+		Rental rental13 = new Rental();
+		rental13.setRentalCarId(7);
+		rental13.setRentalUserID(1);
+		rental13.setRentalStartDate(LocalDate.of(2022, 2, 1));
+		rental13.setRentalEndDate(LocalDate.of(2022, 2, 5));
+		rental13.setRentalTotalCost(1400L);
+		rentalService.addRental(rental13);
+
+		Rental rental14 = new Rental();
+		rental14.setRentalCarId(8);
+		rental14.setRentalUserID(1);
+		rental14.setRentalStartDate(LocalDate.of(2022, 3, 1));
+		rental14.setRentalEndDate(LocalDate.of(2022, 3, 18));
+		rental14.setRentalTotalCost(1500L);
+		rentalService.addRental(rental14);
+
+		Rental rental15 = new Rental();
+		rental15.setRentalCarId(9);
+		rental15.setRentalUserID(1);
+		rental15.setRentalStartDate(LocalDate.of(2022, 3, 1));
+		rental15.setRentalEndDate(LocalDate.of(2022, 4, 4));
+		rental15.setRentalTotalCost(1600L);
+		rentalService.addRental(rental15);
 
 
 		Location location1 = new Location();

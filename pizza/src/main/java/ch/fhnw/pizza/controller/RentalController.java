@@ -86,24 +86,5 @@ public class RentalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Rental not found");
         }
     }
-
-
-
-
-/*
-    @GetMapping(path="", produces = "application/json")
-    public ResponseEntity<Rental> getRental(@RequestParam String location) {
-       Rental rental = rentalService.getRentalByLocation(location);
-        return ResponseEntity.ok(rental);      
-    }
-    
-    */
-
- 
-    /*@GetMapping(path="", produces = "application/json")
-        public ResponseEntity<Menu> getMenu(@RequestParam String location) {
-        Menu menu = menuService.getMenuByLocation(location);
-        return ResponseEntity.ok(menu);      
-    } */
    
 }
