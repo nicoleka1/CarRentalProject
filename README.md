@@ -354,7 +354,33 @@ Then, the following further dependencies are added to the project `pom.xml`:
 > Our Web application was developed using Budibase.
 >
 > --- Describe your views and what APIs is used on which view.
+>
+> #### Home
+> On our Home (/home) screen our customers and admins are welcomed.
 > 
+> ![](images/HomePage.png)
+>
+> #### User
+> The drop-down menu "UserSpace" allows the user to navigate to different screens.
+> ![](images/NavigationAdminSpace.png)
+>
+> ##### Home (/userhome)
+> ##### Login (/userlogin)
+> ##### Available Cars (/availablecars)
+> ##### Frequency Cars (/frequencycars)
+> ##### Contact Us (/contactus)
+> ##### About Us (/aboutus)
+>
+> #### Admin
+> The drop-down menu "AdminSpace" allows the user to navigate to different screens.
+> ![](images/NavigationUserSpace.png)
+>
+> ##### Login (/adminlogin)
+> ##### Users (/users --> /addusers)
+> ##### Admins (/admins --> /addadmins)
+> ##### Cars (/cars --> /addcars)
+> ##### Locations (/locations --> /addlocations)
+> ##### Rentals (/rentals --> /addrentals)
 
 ## Execution
 > To run our application the URL in Budibase must be changed. Start the codespace in CarRentalPorject and run the CarApplication.java. The port 8080 must be set to public. And the URL can be set as a stati variable in Budibase.
@@ -363,7 +389,11 @@ Then, the following further dependencies are added to the project `pom.xml`:
 Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
 
 ## Project Management
-> ***
+We attemded the lectures practically every week in order to acquire the theoretical knowledge. Unfortunately, the lessons were not enough and we had to invest a lot of time to get an overview of how the back- and the frontend should work.
+
+In the beginning, we did everything together. After a cetain time, we specialised a bit more, Nicole on the backend and Lea on the frontend. We agreed on personal milestones and then worked them out individually and discussed the outcome and problems together. As a result, each of us also took on an advisory role in the other's part. The group work worked very well. We managed our communication via Whatsapp and a Microsoft Teams channel that we created for the module Internet Technology. Each of us made an effort and saw what still needed to be done and tackled this independently. Next time we would start a little earlier, but we believe that the course structure slowed this down a little. It would have helped us to take a closer look at the backend first and then start with the frontend.
+
+We are looking forward to further projects together!
 
 ### Roles
 
