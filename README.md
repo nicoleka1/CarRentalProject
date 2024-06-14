@@ -356,6 +356,7 @@ Then, the following further dependencies are added to the project `pom.xml`:
 > Our views and which APIs were used in which view are described below.
 >
 > #### Home
+>  - API: GET 00_Welcome_Page - {{URL}}
 > On our Home (/home) screen our customers and admins are welcomed.
 > 
 > ![](images/HomePage.png)
@@ -365,24 +366,45 @@ Then, the following further dependencies are added to the project `pom.xml`:
 > ![](images/NavigationUserSpace1.png)
 >
 > ##### Home (/userhome --> /availablecars or | --> /contactus)
-> The customer gets information about the page. He can navigate to Available Cars or Contact Us.
+> The customer gets information about the page. He can directly navigate to Available Cars or Contact Us.
 
-> ##### Login (/userlogin)
->
-> - API: 
-> 
-> The user is provided with a login form. The credentials can be entered and 
+> ##### Login (/loginuser)
+> - API: POST 01_auth_my_user - {{URL}}/authentication/token
+> The user is provided with a login form. The user can log in with username and password. Through the POST method the token is retrieved and should be stored to enable only the sections on the page which are configured for the user. If no input is made in the username field or password field a validation error message pops up.
+
 > ##### Available Cars (/availablecars)
-> ##### Frequency Cars (/frequencycars)
+> - API: GET 07_GetAvailableCars with Bindings - {{URL}}/cars/available-cars?startDate={{Binding.startDate}}&endDate={{Binding.endDate}}
+> The user can pick a start and an end date for the rental. The selected dates are stored in a state and binded to the filter parameters in the query. In the backend on Postman and on Budibase it is working properly. In the frontend the state is updated but the query is not able to accept the state. We are thinking to solve the issue with an JavaScript code but we did not figured out yet. There is a table provided to list all available cars in the respectitive period of time.
+ 
 > ##### Contact Us (/contactus)
+> Several information is provided to contact us as well as a contact form (no functional implementation).
+> 
 > ##### About Us (/aboutus)
+> Several information about our company is provided.
 >
 > #### Admin
 > The drop-down menu "AdminSpace" allows the user to navigate to different screens.
 > ![](images/NavigationAdminSpace.png)
->
-> ##### Login (/adminlogin)
-> ##### Users (/users --> /addusers)
+
+##### Login (/adminlogin)
+- API: POST 01_auth_my_admin - {{URL}}/authentication/token
+The admin is provided with a login form. The admin can log in with username and password. Through the POST method the token is retrieved and should be stored to enable only the sections on the page which are configured for the user. If no input is made in the username field or password field a validation error message pops up.
+ 
+##### Users (/users --> /adduser)
+/users
+- API: GET 03_GetAllCarUser - {{URL}}/caruser/
+The admin can see all currently registered users. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addusers screen.
+
+/adduser
+- API: POST 03_CreateNewCarUser with Bindings - {{URL}}/caruser/
+The admin can fill in a form to add a new user. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admins is navigated back to the /users screen. If decides not to record a new user, there is a cancel button to be navigaed back to the /users screen. Back on the /users screen the table is refreshed with the new user.
+
+/users
+> - API:  03_UpdateCarUserByID with Bindings - {{URL}}/caruser/
+
+
+
+> 
 > ##### Admins (/admins --> /addadmins)
 > ##### Cars (/cars --> /addcars)
 > ##### Locations (/locations --> /addlocations)
