@@ -57,6 +57,12 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "admin/*","/cars/*", "/caruser/*","/rentals/*", "/locations/*").hasAnyAuthority("SCOPE_ADMIN_WRITE") // Only users with the scope ADMIN_WRITE can access these endpoints
                 .requestMatchers(HttpMethod.GET, "/cars/*").hasAnyAuthority("SCOPE_ADMIN_READ", "SCOPE_USER_READ") // Only users with the scope ADMIN_READ or USER_READ can access these endpoints
                 .requestMatchers(HttpMethod.GET, "admin/*", "/caruser/*","/rentals/*", "/locations/*").hasAuthority("SCOPE_ADMIN_READ") // Only users with the scope ADMIN_READ can access these endpoints
+                .requestMatchers(                   "/**", //allow access to the home page
+                                                    "/swagger-ui.html", //allow access to the swagger UI
+                                                    "/v3/api-docs/**",  //allow access to the swagger API documentation
+                                                    "/swagger-ui/**",   //allow access to the swagger UI
+                                                    "/h2-console/**")   //allow access to the h2-console
+                                                    .permitAll() 
                 .anyRequest().authenticated() // All other requests need to be authenticated
                 //.anyRequest().hasAuthority("SCOPE_READ")
             )   
