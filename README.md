@@ -1,5 +1,5 @@
 # Car_Rental_Project_Internet_Technology
-The fundamental concept of this group project is to create a functional Web application to practise and use the knowledge we have learned from the lectures and e-lectures.
+Our fundamental concept of this group project is to create a functional Web application to practise and use the knowledge we have learned from the lectures and e-lectures.
 
 #### Contents:
 - [Analysis](#analysis)
@@ -15,294 +15,258 @@ The fundamental concept of this group project is to create a functional Web appl
   - [Frontend Technology](#frontend-technology)
 - [Project Management](#project-management)
   - [Roles](#roles)
-  - [Milestones](#milestones)
 
 ## Analysis
 In our analysis, we specify the following sections to ensure a comprehensive understanding of the requirements and functionalities of our web application. 
 
 ### Scenario Ideation
 
-CarRentalPortal (Car_Rental_Project_Internet_Technology) is a tool allowing the car rental manager (Role: Admin) and the customers (Role: User) to manage car rental operations.
+L&N CARRENTAL (Car_Rental_Project) is a Web application allowing the car rental manager (Role: Admin) and the customers (Role: User) to manage car rental operations.
 
+### User Story Writing
 
+1. As an admin, I want to have a Web application so that I can use it on different mobile devices and on desktop computers.
+2. As an admin, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+3. As an admin, I want to use list views so that I can explore and read my business data (get).
+4. As an admin, I want to update (update) and create (post) views so that I can maintain my business data.
+5. As an admin, I want to delete (delete) specific data entries to maintain my business data.
+6. As an admin, I want the system to validate my credentials during login to ensure security.
+7. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
+8. As a user, I want to have a Web applicatioon so that I can use it on different mobile devices and on desktop computers.
+9. As a user, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+10. As a user, I want to search for available cars in a specific period of time (business logic).
+11. As a user, I want to see the frequency of cars rented (business logic).
+12. As a user, I want to see information about the company.
+13. As a suer, I want to be able to contact the company.
+14. As a user, I want the appication to validate my credentials during login to ensure security.
+15. As a user, I want to be notified with error messages if I provide invalid credentials during login.
 
-#### Scenario 1: Admin Overview
+#### Some stories as more detailed scenarios:
+
+#### Scenario 1: Admin Login
 ------------------------------------------------------------
 Descripiton: The admin logs in to see all the business data.
 
 Steps:
-1. Admin navigates to the login page.
-2. Admin enters the credentials (AdminID & password)
+1. Admin navigates to the login screen.
+2. Admin enters the credentials (username & password)
 3. System verifies the credentials.
-4. Admin can navigate to the business data section.
-5. Admin logs out. 
+4. Admin can navigate to the business data screens.
+5. Admin logs out.
 
 
 #### Scenario 2: Admin Management
 ------------------------------------------------------------
-Description: The admin wants to maintain the DB, such as such as user management, car inventory (add or delete), car location changes, and car availability. 
+Description: The admin wants to maintain the DB, such as such as user management, admmin management, car inventory management, location management and rental management. 
 
 Steps: 
-1. Admin navigates to the login page.
-2. Admin enters the credentials (AdminID & password)
+1. Admin navigates to the login sceen.
+2. Admin enters the credentials (username & password)
 3. System verifies the credentials.
-4. Admin can navigate to the management section.
-5. Admin can CRUD inventory, locations, availability.
+4. Admin can navigate int the "AdminSpace" with five management screens: users, admins, cars, locations and rentals.
+5. Admin can make CRUD-operations.
 6. Admin logs out. 
 
 
 #### Scenario 3: User Registration
 ------------------------------------------------------------
-Description: A new user wants to register an account on the car rental website. 
+Descripiton: The user logs in to see business data.
 
-Steps: 
-1. User navigates to the website's registration page.
-2. User fills out the registration form with their personal information.
-3. User submits the registration form.
-4. System validates the information and creates a new user account.
-5. User receives a confirmation message and is redirected to the login page.
+Steps:
+1. User navigates to the login screen.
+2. User enters the credentials (username & password)
+3. System verifies the credentials.
+4. User can navigate in the "UserSpace".
+5. User logs out.
 
 
 #### Scenario 4: Searching for Available Cars
 ------------------------------------------------------------
-Description: A registered user wants to search for available cars for rental. 
+Description: A logged in user wants to search for available cars for rental.
 
 Steps: 
-1. User logs in to the car rental website.
-2. User navigates to the search page.
-3. User selects the desired location, rental dates, and any other search criteria.
-4. User submits the search request.
-5. System retrieves and displays a list of available cars matching the search criteria. 
+1. User navigates to the available cars screen.
+2. User picks a start and and end date of the rental.
+3. User submits the search request (refresh).
+5. Application retrieves and displays a list of available cars matching the search criteria.
+6. User logs out.
 
 
-#### Scenario 5: Renting a Car
+#### Scenario 5: Frequency of Rental
 ------------------------------------------------------------
-Description: A registered user wants to rent a car from the available options. 
+Description: A logged in user want to see the frequency of cars rented.
 
 Steps: 
-1. User selects a car from the list of available cars.
-2. User specifies the rental dates and any additional rental options.
-3. User confirms the rental request.
-4. System processes the rental request, calculates the total cost, and checks for availability.
-5. User makes the payment to confirm the rental.
-6. System generates a rental confirmation and updates the car's availability status. 
-
-
-### User Story Writing
-
-1. As an admin, I want the system to validate my credentials during login to ensure security.
-2. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
-3. As an admin, I want to log in to the system to perform create, update, and delete operations.
-4. As an admin, I want to create new data, update existing data, and delete unwanted data on the platform.
-5. As a new user, I want to register an account to access the car rental services.
-6. As a registered user, I want to search for available cars based on my preferred location and dates.
-7. As a registered user, I want to rent a car by selecting from the available options and specifying rental details.
+1. User navigates to the frequency of rental screen.
+2. An overview of the frequency of rentals is provided.
+3. User logs out.
 
 
 ### Use Case
 
-#### Use Case 1: Admin Overview
+#### Use Case 1: Admin Login
 ------------------------------------------------------------
-Actors:         Admin, System
+Actors:         Admin, Application
 
-Description:    Allows the admin to get an overview of the business data.
+Description:    Allows the admin to log in.
 
-Precondition:   Admin navigates to the login page.
+Precondition:   Admin navigates to the login screen.
 
-Postcondition:  Could get an overview of the current data.
+Postcondition:  Admin is logged in.
 
 Main Flow: 
-1. Admin logs in.
+1. Admin enters credentials (username & password).
 2. System validates the credentials.
-3. Admin navigates to the overview page. 
+3. Credentials are correct.
 
 Alternate Flows: 
 Invalid input: If the admin provides invalid credentials, system displays error messages.
 
 
-#### Use Case 2: Admin Management
+#### Use Case 2: Admin Management; Read
 ------------------------------------------------------------
-Actors:          Admin, System 
+Actors:         Admin, Application
 
-Description:     Allows the admin to manage the platform. 
+Description:    Allows admin to read business data.
 
-Precondition:    Admin navigates to the login page. 
+Precondition:   Admin is logged in.
 
-Postcondition:   Desired CRUD operations are executed successfully.  
+Postcondition:  Information is displayed successfully.
 
 Main Flow:
-1. Admin logs in.
-2. System validates the credentials.
-3. Admin navigates to the management page.
-4. Admin create, update, delete desired data. 
-
-Alternate Flows: 
-Invalid input: If the admin provides invalid information, system displays error messages. 
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin reads the respectitive business data.
 
 
-#### Use Case 3: User Management (Edit User Information)
+#### Use Case 3: Admin Management; Add
 ------------------------------------------------------------
-Actors:         Admin, System
+Actors:         Admin, Application
 
-Description:    Allows an admin to edit the information of multiple users.
+Description:    Allows admin to add business data.
 
-Precondition:   Admin is logged in and has access to user management functionalities.
+Precondition:   Admin is logged in.
 
-Postcondition:  User information is successfully updated.
+Postcondition:  Create operation is successfully executed.
 
 Main Flow:
-1. Admin navigates to the user management section.
-2. Admin selects a user to edit.
-3. Admin modifies the user's information (e.g., name, email, address).
-4. Admin saves the changes.
- 
-Alternate Flows: 
-Invalid input: If the admin provides invalid information, system displays error messages.
-
-
-#### Use Case 4: Car Mangement (Edit Car Information)
-------------------------------------------------------------
-Actors:         Admin, System
-
-Description:    Allows an admin to edit the information of multiple cars.
-
-Precondition:   Admin is logged in and has access to car management functionalities.
-
-Postcondition:  Car information is successfully updated.
-
-Main Flow:
-1. Admin navigates to the car management section.
-2. Admin selects a car to edit.
-3. Admin modifies the car's information (e.g., make, model, rental rate).
-4. Admin saves the changes.
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin pushed the add button.
+3. Admin is fowarded to the add screen.
+4. Admin fills in the field in the form.
+5. The form is validated.
+6. The business data is added with the new entry.
 
 Alternate Flows: 
 Invalid input: If the admin provides invalid information, system displays error messages.
 
 
-#### Use Case 5: User Registration
+#### Use Case 4: Admin Management; Update
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         Admin, Application
 
-Description:    Allows a user to create a new account on the car rental website.
+Description:    Allows admin to update business data.
 
-Precondition:   User navigates to the registration page.
+Precondition:   Admin is logged in.
 
-Postcondition:  User account is created successfully.
+Postcondition:  Update operation is successfully executed.
 
 Main Flow:
-1. User provides personal information.
-2. System validates the information.
-3. System creates a new user account.
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin clicks on the row that should be updated.
+3. Side panel on the right opens.
+6. Admin fills in the field in the form.
+7. Admin pushed the update button.
+8. The form is validated.
+9. The business data is updated with the new entry.
 
 Alternate Flows: 
-Invalid input: If the user provides invalid information, system displays error messages.
+Invalid input: If the admin provides invalid information, system displays error messages.
+
+
+#### Use Case 5: Admin Management; Delete
+------------------------------------------------------------
+Actors:         Admin, Application
+
+Description:    Allows admin to delete business data.
+
+Precondition:   Admin is logged in.
+
+Postcondition:  Delete operation is successfully executed.
+
+Main Flow:
+1. Admin navigates to a screen: users, admins, cars, location or rentals.
+2. Admin clicks on the row that should be deleted.
+3. Side panel on the right opens.
+6. Admin pushed the delete button.
+7. The form is validated.
+8. The business data is deleted.
+
+Alternate Flows: 
+None.
 
 
 #### Use Case 6: Search for Available Cars
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         User, Application
 
-Description:    Allows a user to search for available cars based on specified criteria.
+Description:    Allows a user to search for available cars based on specified period of time.
 
-Precondition:   User is logged in and navigates to the search page.
+Precondition:   User is logged in and navigates to the available cars screen.
 
 Postcondition:  User views a list of available cars matching the search criteria.
 
 Main Flow:
-1. User specifies search criteria.
-2. System retrieves and displays available cars.
+1. User specifies search criteria with a start date and an end date.
+2. Application retrieves and displays available cars.
 
 Alternate Flows: 
 No cars available: If no cars match the search criteria, system displays a message.
 
 
-#### Use Case 7: Rent a Car
+#### Use Case 7: Rental Frequency Cars
 ------------------------------------------------------------
-Actors:         User, System
+Actors:         User, Application
 
-Description:    Allows a user to rent a car from the available options.
+Description:    Allows a user to see the rentalfrequency of cars.
 
-Precondition:   User has selected a car for rental.
+Precondition:   User is logged in and navigates to the rental frequency screen.
 
-Postcondition:  User completes the rental process and receives confirmation.
+Postcondition:  User views the desired information.
 
 Main Flow:
-1. User selects a car for rental.
-2. User specifies rental details (e.g., rental dates, additional options).
-3. User confirms the rental.
-4. System processes the rental request.
-5. System generates a rental confirmation.
-6. User receives a confirmation of the rental.
+2. Application retrieves and displays the information.
 
 Alternate Flows: 
-None
+No data available: If no data is available, system displays a message.
 
 
-#### Use Case 8: View Payment Details
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the payment details associated with a rental.
-
-Precondition:   User is logged in and navigates to the rental details page.
-
-Postcondition:  User views the payment details of the rental.
-
-Main Flow:
-1. User selects a rental to view details.
-2. User navigates to the payment details section.
-3. System retrieves and displays the payment details associated with the rental.
-
-Alternate Flows: 
-No payment details: If there are no payment details associated with the rental, system displays a message.
-
-
-#### Use Case 9: View Rental Location Details
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the details of the location where a rental takes place.
-
-Precondition:   User is logged in and navigates to the rental details page.
-
-Postcondition:  User views the location details of the rental.
-
-Main Flow:
-1. User selects a rental to view details.
-2. User navigates to the location details section.
-3. System retrieves and displays the location details where the rental takes place.
-
-Alternate Flows: 
-Location details unavailable: If there are no location details associated with the rental, system displays a message.
-
-
-#### Use Case 10: View Available Cars at Location
-------------------------------------------------------------
-Actors:         User, System
-
-Description:    Allows a user to view the available cars at a specific rental location.
-
-Precondition:   User is logged in and navigates to the location details page.
-
-Postcondition:  User views the available cars at the location.
-
-Main Flow:
-1. User selects a location to view details.
-2. User navigates to the available cars section.
-3. System retrieves and displays the list of available cars at the location.
-
-Alternate Flows: 
-No available cars: If there are no cars available at the location, system displays a message.
 
 ### Design
-> ***
+This section outlines the design principles and guidelines that ensure our corporate identiy is consistenly reflected across our application. The L&N CARRENTAL logo features a sleek, modern car silhouette combined with the company name. The logo colors are grey and two nuances of turquoise, reflecting our brand’s identity.
+
+![](images/LogoCarRental.png)
+
+#### Color Scheme
+The primary colors are grey and turquoise the secondary colors are shades of dark turquoise. Some accent colors in turquoide are additionally used.
+
+#### Graphics
+We used custom-designed icons in turquoise shades to maintain consistency. Icons should be minimalistic and align with the overall dark theme of the website. High-quality images of cars with a dark filter overlay to blend seamlessly into the dark-themed layout.
+
+#### Layout
+There is a fixed horizontal navigation on the top. With a home screen and to sections "UserSpace" and "AdminSpace. The two space section are nested navigation element which provide by clicking further screens.
+
+#### User Esperience (UX)
+It is ensured that the website is fully responsive, providing a seamless experience across all devices. The navigation is keept simple and intuitive, with clear labels. Buttons, forms, and other interactive elements should have clear, responsive feedback.
+
+Our dark-themed, turquoise-accented design provides a modern and elegant user experience, while our commitment to usability and accessibility ensures that every visitor can easily find and rent their perfect car. 
 
 ### Wireframe
-> ***
+Here is an overview of our wireframes which we have created with draw.io. Please zoom in to be able to read it. :)
+
+![](images/FinaleCarRentalWireframes.drawio.png)
 
 ### Prototype Design
-> ***
+The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
 
 ### Domain Design
 
@@ -310,17 +274,16 @@ We created an Entity-Relationship Model in Visual Paradigm.
 
 #### Entities
 
-Admin: Represents the administrators of the website.
+Admins: Represents the administrators of the website.
 
-User: Represents individuals who interact with the website.
+Users: Represents individuals who interact with the application.
 
-Car: Represents the vehicles available for rental.
+Cars: Represents the vehicles for rental.
 
-Rental Represents a rental transaction.
+Locations: Represents the rental locations where cars can be rented.
 
-Payment: Represents a payment transaction associated with a rental.
+Rentals: Represents a rental transaction.
 
-Location: Represents the rental locations where cars are available.
 
 #### Relationships
 
@@ -333,14 +296,8 @@ One-to-Many relationship indicates that an admin can edit multiple cars.
 ##### User – Rental (MakeRental)
 One-to-Many relationship indicating that a user can make multiple rentals, but each rental is associated with only one user.
 
-##### User – Payment (MakePayment)
-One-to-Many relationship indicates that a user can make multiple payments, but each payment is made by only one user.
-
 ##### Car – Rental (IsRentedFor)
 One-to-Many relationship indicating that a car can be rented multiple times, but each rental is associated with only one car.
-
-##### Rental – Payment (IsAssociatedWith)
-One-to-One relationship indicating that each rental has exactly one payment associated with it.
 
 ##### Rental – Location (TakesPlaceAt)
 Many-to-One relationship: Many rentals can take place ate the same rental location, but each rental only takes place at  only one location.
@@ -350,40 +307,111 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 
 #### Model
 
-![](images/EntityRelationshipCarRental2.0.png)
+![](images/FinalEntityRelationshipCarRental.png)
 
-### Business Logic 
-> ***
+### Business Logic
+> Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
+>
+> Based on UC-5, there will be all available cars in a specified period of time:
+>
+> ...
+>
+> Based on UC-6, there will be information about the frequency of rented cars (entities involved: cars and rentals):
+>
+> ...
 
 ## Implementation
-> ***
+To achieve the overall project goals for L&N CARRENTAL, we utilized a diverse set of applications and technologies, each serving a specific purpose in the development and enhancement of our website.
+
+We used Visual Paradigm to create the entity relationship model. With the support of the tool draw.io we have worked out our wireframes. The logo was designed with Microsoft Powerpoint and uploaded to imgbb, to be able to implement it in Budibase. 
+
+We have created a group workspace in Postman to test our APIs. GitHub was used for version control, code repository management, and collaboration among the development in our small team. GitHub Codespaces provided a cloud-based development environment that allowed us to develop and test code from anywhere, ensuring consistent setups and configurations. GitHub Copilot was used to enhance developer productivity by providing AI-powered code suggestions and completions, speeding up our coding process and reducing errors.
 
 ### Backend Technology
-> ***
+> As suggested we cloned the Pizza Reference Project to start, so did we. Our Web application relies on Spring Boot and the dependency to Spring Data,, Java Persistence API (JPA) and H2 Database. To bootstrap the application the Spring Initializr has been used.
+>
+Then, the following further dependencies are added to the project `pom.xml`:
+
+- DB:
+```XML
+<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+</dependency>
+```
+
+- SWAGGER:
+```XML
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.3.0</version>
+   </dependency>
+```
 
 ### Frontend Technology
-> ***
+> Our Web application was developed using Budibase.
+>
+> Our views and which APIs were used in which view are described below.
+>
+> #### Home
+> On our Home (/home) screen our customers and admins are welcomed.
+> 
+> ![](images/HomePage.png)
+>
+> #### User
+> The drop-down menu "UserSpace" allows the user to navigate to different screens.
+> ![](images/NavigationUserSpace.png)
+>
+> ##### Home (/userhome --> /availablecars or | --> /contactus)
+> The customer gets information about the page. He can navigate to Available Cars or Contact Us.
+
+> ##### Login (/userlogin)
+>
+> - API: 
+> 
+> The user is provided with a login form. The credentials can be entered and 
+> ##### Available Cars (/availablecars)
+> ##### Frequency Cars (/frequencycars)
+> ##### Contact Us (/contactus)
+> ##### About Us (/aboutus)
+>
+> #### Admin
+> The drop-down menu "AdminSpace" allows the user to navigate to different screens.
+> ![](images/NavigationAdminSpace.png)
+>
+> ##### Login (/adminlogin)
+> ##### Users (/users --> /addusers)
+> ##### Admins (/admins --> /addadmins)
+> ##### Cars (/cars --> /addcars)
+> ##### Locations (/locations --> /addlocations)
+> ##### Rentals (/rentals --> /addrentals)
 
 ## Execution
-> ***
+> To run our application the URL in Budibase must be changed. Start the codespace in CarRentalPorject and run the CarApplication.java. The port 8080 must be set to public. And the URL can be set as a stati variable in Budibase.
+
+## Deployment to a PaaS
+Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
 
 ## Project Management
-> ***
+We attemded the lectures practically every week in order to acquire the theoretical knowledge. Unfortunately, the lessons were not enough and we had to invest a lot of time to get an overview of how the back- and the frontend should work.
+
+In the beginning, we did everything together. After a cetain time, we specialised a bit more, Nicole on the backend and Lea on the frontend. We agreed on personal milestones and then worked them out individually and discussed the outcome and problems together. As a result, each of us also took on an advisory role in the other's part. The group work worked very well. We managed our communication via Whatsapp and a Microsoft Teams channel that we created for the module Internet Technology. Each of us made an effort and saw what still needed to be done and tackled this independently. Next time we would start a little earlier, but we believe that the course structure slowed this down a little. It would have helped us to take a closer look at the backend first and then start with the frontend.
+
+We are looking forward to further projects together!
 
 ### Roles
-- developer: Nicole Kaufmann
-- developer: Lea Gauch
 
-### Milestones
-1. **Analysis**: Scenario ideation, use case analysis and user story writing. (Submission 2024-04-01)
-2. **Prototype Design**: Creation of wireframe and prototype.
-3. **Domain Design**: Definition of domain model. (Submission 2024-04-01)
-4. **Business Logic and API Design**: Definition of business logic and API.
-5. **Data and API Implementation**: Implementation of data access and business logic layers, and API.
-6. **Security and Frontend Implementation**: Integration of security framework and frontend realisation.
-7. (optional) **Deployment**: Deployment of Web application on cloud infrastructure.
+- Nicole Kaufmann
+  - Back-end developer
+  - Consulting front-end developer
 
+- Lea Gauch
+  - Frond-end developer
+  - Consulting back-end developer
 
+     
 #### Maintainer
 - Nicole Kaufmann
 - Lea Gauch
