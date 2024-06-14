@@ -170,7 +170,6 @@ public class CarApplication {
 
 		CarUser carUser1 = new CarUser();
 		carUser1.setCarUserName("Jane Doe");
-		carUser1.setCarUserSurname("Doe");
 		carUser1.setCarUserEmail("jane.doe@example.com");
 		carUser1.setCarUserPassword("password");
 		carUser1.setCarUserAddress("5678 Oak Street");
@@ -178,8 +177,7 @@ public class CarApplication {
 		carUserService.addCarUser(carUser1);
 
 		CarUser carUser2 = new CarUser();
-		carUser2.setCarUserName("Alice");
-		carUser2.setCarUserSurname("Wonderland");
+		carUser2.setCarUserName("Alice Wonderland");
 		carUser2.setCarUserEmail("alice.wonderland@example.com");
 		carUser2.setCarUserPassword("password");
 		carUser2.setCarUserAddress("1234 Elm Street");
@@ -187,8 +185,7 @@ public class CarApplication {
 		carUserService.addCarUser(carUser2);
 
 		CarUser carUser3 = new CarUser();
-		carUser3.setCarUserName("Bob");
-		carUser3.setCarUserSurname("Builder");
+		carUser3.setCarUserName("Bob Builder");
 		carUser3.setCarUserEmail("bob.builder@example.com");
 		carUser3.setCarUserPassword("password");
 		carUser3.setCarUserAddress("5678 Oak Street");

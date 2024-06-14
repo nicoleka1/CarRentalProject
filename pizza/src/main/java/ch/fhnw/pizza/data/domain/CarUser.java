@@ -22,9 +22,6 @@ public class CarUser {
     @Column(name = "car_user_name")
     private String carUserName;
 
-    @Column(name = "car_user_surname")
-    private String carUserSurname;
-
     @Column(name = "car_user_email")
     private String carUserEmail;
 
@@ -51,14 +48,6 @@ public class CarUser {
 
     public void setCarUserName(String carUserName) {
         this.carUserName = carUserName;
-    }
-
-    public String getCarUserSurname() {
-        return carUserSurname;
-    }
-
-    public void setCarUserSurname(String carUserSurname) {
-        this.carUserSurname = carUserSurname;
     }
 
     public String getCarUserEmail() {

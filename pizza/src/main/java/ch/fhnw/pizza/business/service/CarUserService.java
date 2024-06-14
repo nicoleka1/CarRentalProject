@@ -45,8 +45,6 @@ public class CarUserService {
         if(carUserToUpdate != null) {
             if(carUser.getCarUserName() != null)
             carUserToUpdate.setCarUserName(carUser.getCarUserName());
-            if(carUser.getCarUserSurname() != null)
-            carUserToUpdate.setCarUserSurname(carUser.getCarUserSurname());
             if(carUser.getCarUserEmail() != null)
             carUserToUpdate.setCarUserEmail(carUser.getCarUserEmail());
             if(carUser.getCarUserPassword() != null)
