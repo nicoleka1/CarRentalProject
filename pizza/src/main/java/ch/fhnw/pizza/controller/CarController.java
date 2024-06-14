@@ -81,22 +81,14 @@ public class CarController {
     }
 
     @GetMapping(path="/available-cars", produces = "application/json")
-    public List<Car> getAvailableCars(@RequestParam("startDate") LocalDate startDate,
-                                      @RequestParam("endDate") LocalDate endDate) {
-        Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
-        List<Car> allCars = carService.getAllCars();
-        List<Car> availableCars = new ArrayList<>();
-        System.out.println("startDate: " + startDate);
-        System.out.println("endDate: " + endDate);
-
-        for (Car car : allCars) {
-            if (!Arrays.asList(unavailableCarIDs).contains(car.getCarId())) {
-                availableCars.add(car);
-            }
-        }
-        System.out.println("availableCars: " + availableCars);
-        return availableCars;
+    public List<Car> getAvailableCars(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                      @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<Car> carList = carService.getAvailableCars(startDate, endDate);
+        return carList;
     }
+
+
+
 
     @GetMapping(path="/rented-days", produces = "application/json")
     public List<Car> getCarDetailsWithRentedDays(){

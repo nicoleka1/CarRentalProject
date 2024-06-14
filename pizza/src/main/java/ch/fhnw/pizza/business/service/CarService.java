@@ -3,12 +3,13 @@ package ch.fhnw.pizza.business.service;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.fhnw.pizza.data.domain.Car;
 import ch.fhnw.pizza.data.domain.Rental;
@@ -27,6 +28,9 @@ public class CarService {
 
     @Autowired
     private RentalRepository rentalRepository;
+
+    @Autowired
+    private RentalService rentalService;
     
     public Car findCarByCarID(Long id) {
         try {
@@ -72,6 +76,24 @@ public class CarService {
         } else
             throw new Exception("Car with id " + id + " does not exist");
     }
+
+    public List<Car> getAvailableCars(LocalDate startDate,LocalDate endDate) {
+
+        Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
+        List<Car> allCars = getAllCars();
+        List<Car> availableCars = new ArrayList<>();
+        System.out.println("startDate: " + startDate);
+        System.out.println("endDate: " + endDate);
+
+        for (Car car : allCars) {
+            if (!Arrays.asList(unavailableCarIDs).contains(car.getCarId())) {
+                availableCars.add(car);
+            }
+        }
+        System.out.println("availableCars: " + availableCars);
+        return availableCars;
+    }
+
 
     public List<Car> getCarDetailsWithRentedDays() {
         List<Car> carList = carRepository.findAll();
