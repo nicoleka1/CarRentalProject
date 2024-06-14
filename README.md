@@ -263,7 +263,7 @@ Our dark-themed, turquoise-accented design provides a modern and elegant user ex
 ### Wireframe
 Here is an overview of our wireframes which we have created with draw.io. Please zoom in to be able to read it. :)
 
-![](images/FinaleCarRentalWireframes.drawio.png)
+![](images/Wireframes.drawio.png)
 
 ### Prototype Design
 The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
@@ -362,7 +362,7 @@ Then, the following further dependencies are added to the project `pom.xml`:
 >
 > #### User
 > The drop-down menu "UserSpace" allows the user to navigate to different screens.
-> ![](images/NavigationUserSpace.png)
+> ![](images/NavigationUserSpace1.png)
 >
 > ##### Home (/userhome --> /availablecars or | --> /contactus)
 > The customer gets information about the page. He can navigate to Available Cars or Contact Us.
