@@ -365,7 +365,7 @@ On our Home (/home) screen our customers and admins are welcomed.
 The drop-down menu "UserSpace" allows the user to navigate to different screens.
 ![](images/NavigationUserSpace1.png)
 
-##### Home (/userhome --> /availablecars or | --> /contactus)
+##### Home (/userhome --> /availablecars || --> /contactus)
 The customer gets information about the page. He can directly navigate to Available Cars or Contact Us.
 
 ##### Login (/loginuser)
@@ -441,8 +441,12 @@ The admin can click on a row that should be deleted. With an update state variab
   
 The admin can see all currently registered cars. The query is executed through a data provider and the values are listed in a table. With an add button the admin is forwarded to the /addcar screen.
 
+- API: GET 08_GetCarsWithDaysOfRent - {{URL}}/cars/rented-days
+
+An overview for the admin is provided to see how many days the cars of the fleet was rented over the existence of our business.
+
 /addcar
-- API: POST 04_CreateNewCar with Bindings - {{URL}}/cars/
+- API: POST 04_CreateNewCar with Bindings - {{URL}}/cars
 
 The admin can fill in a form to add a new car. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /cars screen. If the admin decides not to record a new car, there is a cancel button to be navigated back to the /cars screen. Back on the /cars screen the table is refreshed with the new car.
 
