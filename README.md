@@ -15,7 +15,6 @@ Our fundamental concept of this group project is to create a functional Web appl
   - [Frontend Technology](#frontend-technology)
 - [Project Management](#project-management)
   - [Roles](#roles)
-  - [Milestones](#milestones)
 
 ## Analysis
 In our analysis, we specify the following sections to ensure a comprehensive understanding of the requirements and functionalities of our web application. 
@@ -124,7 +123,7 @@ Alternate Flows:
 Invalid input: If the admin provides invalid credentials, system displays error messages.
 
 
-#### Use Case 3: Admin Management; Read
+#### Use Case 2: Admin Management; Read
 ------------------------------------------------------------
 Actors:         Admin, Application
 
@@ -184,7 +183,7 @@ Alternate Flows:
 Invalid input: If the admin provides invalid information, system displays error messages.
 
 
-#### Use Case 4: Admin Management; Delete
+#### Use Case 5: Admin Management; Delete
 ------------------------------------------------------------
 Actors:         Admin, Application
 
@@ -203,10 +202,10 @@ Main Flow:
 8. The business data is deleted.
 
 Alternate Flows: 
--
+None.
 
 
-#### Use Case 5: Search for Available Cars
+#### Use Case 6: Search for Available Cars
 ------------------------------------------------------------
 Actors:         User, Application
 
@@ -224,7 +223,7 @@ Alternate Flows:
 No cars available: If no cars match the search criteria, system displays a message.
 
 
-#### Use Case 6: Rental Frequency Cars
+#### Use Case 7: Rental Frequency Cars
 ------------------------------------------------------------
 Actors:         User, Application
 
@@ -267,7 +266,7 @@ Here is an overview of our wireframes which we have created with draw.io. Please
 ![](images/FinaleCarRentalWireframes.drawio.png)
 
 ### Prototype Design
-> The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
+The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
 
 ### Domain Design
 
@@ -308,7 +307,7 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 
 #### Model
 
-![](images/EntityRelationshipCarRental2.0.png)
+![](images/FinalEntityRelationshipCarRental.png)
 
 ### Business Logic
 > Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
@@ -322,14 +321,34 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 > ...
 
 ## Implementation
-> To achieve the overall project goals for L&N CARRENTAL, we utilized a diverse set of applications and technologies, each serving a specific purpose in the development and enhancement of our website. We userd Visual Paradigm to create the enity relationship model. With the support of the tool draw.io we have worked out our wireframes. The logo was designe with Microsoft Powerpoint. We have created a group workspace in postman to test our APIs. GitHub was used for version control, code repository management, and collaboration among the development in our small team. GitHub Codespaces provided a cloud-based development environment that allowed us to develop and test code from anywhere, ensuring consistent setups and configurations. GitHub Copilot was used to enhance developer productivity by providing AI-powered code suggestions and completions, speeding up our coding process and reducing errors.
+To achieve the overall project goals for L&N CARRENTAL, we utilized a diverse set of applications and technologies, each serving a specific purpose in the development and enhancement of our website.
+
+We used Visual Paradigm to create the entity relationship model. With the support of the tool draw.io we have worked out our wireframes. The logo was designed with Microsoft Powerpoint and uploaded to imgbb, to be able to implement it in Budibase. 
+
+We have created a group workspace in Postman to test our APIs. GitHub was used for version control, code repository management, and collaboration among the development in our small team. GitHub Codespaces provided a cloud-based development environment that allowed us to develop and test code from anywhere, ensuring consistent setups and configurations. GitHub Copilot was used to enhance developer productivity by providing AI-powered code suggestions and completions, speeding up our coding process and reducing errors.
 
 ### Backend Technology
 > As suggested we cloned the Pizza Reference Project to start, so did we. Our Web application relies on Spring Boot and the dependency to Spring Data,, Java Persistence API (JPA) and H2 Database. To bootstrap the application the Spring Initializr has been used.
 >
-> DB ---
->
-> SWAGGER ---
+Then, the following further dependencies are added to the project `pom.xml`:
+
+- DB:
+```XML
+<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+</dependency>
+```
+
+- SWAGGER:
+```XML
+   <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.3.0</version>
+   </dependency>
+```
 
 ### Frontend Technology
 > Our Web application was developed using Budibase.
@@ -338,10 +357,10 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 > 
 
 ## Execution
-> ***
+> To run our application the URL in Budibase must be changed. Start the codespace in CarRentalPorject and run the CarApplication.java. The port 8080 must be set to public. And the URL can be set as a stati variable in Budibase.
 
 ## Deployment to a PaaS
-> Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
+Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
 
 ## Project Management
 > ***
@@ -355,18 +374,8 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 - Lea Gauch
   - Frond-end developer
   - Consulting back-end developer
+
      
-
-### Milestones during the project were:
-1. **Analysis**: Scenario ideation, use case analysis and user story writing. (Submission 2024-04-01)
-2. **Prototype Design**: Creation of wireframe and prototype.
-3. **Domain Design**: Definition of domain model. (Submission 2024-04-01)
-4. **Business Logic and API Design**: Definition of business logic and API.
-5. **Data and API Implementation**: Implementation of data access and business logic layers, and API.
-6. **Security and Frontend Implementation**: Integration of security framework and frontend realisation.
-7. (optional) **Deployment**: Deployment of Web application on cloud infrastructure.
-
-
 #### Maintainer
 - Nicole Kaufmann
 - Lea Gauch
