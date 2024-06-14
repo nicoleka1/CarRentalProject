@@ -353,7 +353,7 @@ Then, the following further dependencies are added to the project `pom.xml`:
 ### Frontend Technology
 > Our Web application was developed using Budibase.
 >
-> --- Describe your views and what APIs is used on which view.
+> Our views and which APIs were used in which view are described below.
 >
 > #### Home
 > On our Home (/home) screen our customers and admins are welcomed.
@@ -362,10 +362,16 @@ Then, the following further dependencies are added to the project `pom.xml`:
 >
 > #### User
 > The drop-down menu "UserSpace" allows the user to navigate to different screens.
-> ![](images/NavigationAdminSpace.png)
+> ![](images/NavigationUserSpace.png)
 >
-> ##### Home (/userhome)
+> ##### Home (/userhome --> /availablecars or | --> /contactus)
+> The customer gets information about the page. He can navigate to Available Cars or Contact Us.
+
 > ##### Login (/userlogin)
+>
+> - API: 
+> 
+> The user is provided with a login form. The credentials can be entered and 
 > ##### Available Cars (/availablecars)
 > ##### Frequency Cars (/frequencycars)
 > ##### Contact Us (/contactus)
@@ -373,7 +379,7 @@ Then, the following further dependencies are added to the project `pom.xml`:
 >
 > #### Admin
 > The drop-down menu "AdminSpace" allows the user to navigate to different screens.
-> ![](images/NavigationUserSpace.png)
+> ![](images/NavigationAdminSpace.png)
 >
 > ##### Login (/adminlogin)
 > ##### Users (/users --> /addusers)
