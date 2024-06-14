@@ -262,9 +262,9 @@ It is ensured that the website is fully responsive, providing a seamless experie
 Our dark-themed, turquoise-accented design provides a modern and elegant user experience, while our commitment to usability and accessibility ensures that every visitor can easily find and rent their perfect car. 
 
 ### Wireframe
-> Here is a small overview of our wireframes which we have created with draw.io:
->
-> WIREFRAMES
+Here is an overview of our wireframes which we have created with draw.io. Please zoom in to be able to read it. :)
+
+![](images/FinaleCarRentalWireframes.drawio.png)
 
 ### Prototype Design
 > The prototypes were developed in the low-code tool BudiBase and then progressively expanded and improved through the project work.
