@@ -23,7 +23,7 @@ public class WelcomeController {
     @GetMapping(value="/")
     public String getWelcomeString() {
         
-        return "Hello, welcome to our Pizzeria!";
+        return "Well done, you made it to our CarRentalProject webpage, welcome!";
     }
 
     @GetMapping(value="/user")

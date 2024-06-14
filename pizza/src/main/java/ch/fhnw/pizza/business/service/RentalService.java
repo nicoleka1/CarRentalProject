@@ -3,6 +3,7 @@ package ch.fhnw.pizza.business.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -101,6 +102,43 @@ public class RentalService {
         }
         return rentalCarIDs.toArray(new Long[0]);
     }
+
+    // Returns the number of rented days for a given rental car ID
+    public int getRentedDaysByCarId(Long carId) {
+        List<Rental> rentalList = rentalRepository.findAll();
+        int rentedDays = 0;
+        
+        for (Rental rental : rentalList) {
+            if (rental.getRentalCarId().equals(carId)) {
+                LocalDate startDate = rental.getRentalStartDate();
+                LocalDate endDate = rental.getRentalEndDate();
+                rentedDays += ChronoUnit.DAYS.between(startDate, endDate) + 1;
+            }
+        }
+        
+        return rentedDays;
+    }
+    
+    // Returns the number of rented days for all cars
+    public int[] getRentedDaysByAllCars() {
+        List<Rental> rentalList = rentalRepository.findAll();
+        List<Long> rentalCarIDs = new ArrayList<>();
+        
+        for (Rental rental : rentalList) {
+            Long rentalCarID = rental.getRentalCarId();
+            if (!rentalCarIDs.contains(rentalCarID)) {
+                rentalCarIDs.add(rentalCarID);
+            }
+        }
+        
+        int[] rentedDaysByAllCars = new int[rentalCarIDs.size()];
+        for (int i = 0; i < rentalCarIDs.size(); i++) {
+            rentedDaysByAllCars[i] = getRentedDaysByCarId(rentalCarIDs.get(i));
+        }
+        
+        return rentedDaysByAllCars;
+    }
+
 }
 
 

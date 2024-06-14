@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
@@ -18,23 +17,13 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.http.HttpMethod;
-
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import static org.springframework.security.config.Customizer.withDefaults;
 
-import java.io.IOException;
-
 import javax.crypto.spec.SecretKeySpec;
-
-
+import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -48,13 +37,11 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(
             User.withUsername("myuser")
                 .password("{noop}password")
-                .authorities("READ","ROLE_USER")
-                //.roles("USER") // changed from authorities to roles
+                .authorities("CARS_READ", "USER_READ","ROLE_USER")
                 .build(),
             User.withUsername("myadmin")
                 .password("{noop}password")
-                .authorities("READ","ROLE_ADMIN")
-                //.roles("ADMIN") // changed from authorities to roles
+                .authorities("ADMIN_READ","ADMIN_WRITE","ROLE_ADMIN")
                 .build());
     }
     
@@ -63,18 +50,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests( auth -> auth
-                    //.requestMatchers("/cars").hasRole("USER") // working!!!!!!
-                    .requestMatchers(HttpMethod.POST, "/cars*").hasRole("ADMIN") 
-                    .requestMatchers(HttpMethod.GET, "/cars").hasRole("USER") 
-                    .requestMatchers("/authentication/token").permitAll() // /authentication/token should be reachable for the whole world without authentication
-                    .anyRequest().authenticated()
-                )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(oAuth -> oAuth.jwt(Customizer.withDefaults()))
-                .httpBasic(withDefaults())
-                .build(); 
-    }
+                .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/authentication/**").permitAll() // /authentication/* should be reachable for unauthenticated users
+                .requestMatchers(HttpMethod.POST, "admin/*","/cars/*", "/caruser/*","/rentals/*", "/locations/*").hasAuthority("SCOPE_ADMIN_WRITE") // Only users with the scope ADMIN_WRITE can access these endpoints
+                .requestMatchers(HttpMethod.PUT, "admin/*","/cars/*", "/caruser/*","/rentals/*", "/locations/*").hasAuthority("SCOPE_ADMIN_WRITE") // Only users with the scope ADMIN_WRITE can access these endpoints
+                .requestMatchers(HttpMethod.DELETE, "admin/*","/cars/*", "/caruser/*","/rentals/*", "/locations/*").hasAnyAuthority("SCOPE_ADMIN_WRITE") // Only users with the scope ADMIN_WRITE can access these endpoints
+                .requestMatchers(HttpMethod.GET, "/cars/*").hasAnyAuthority("SCOPE_ADMIN_READ", "SCOPE_USER_READ") // Only users with the scope ADMIN_READ or USER_READ can access these endpoints
+                .requestMatchers(HttpMethod.GET, "admin/*", "/caruser/*","/rentals/*", "/locations/*").hasAuthority("SCOPE_ADMIN_READ") // Only users with the scope ADMIN_READ can access these endpoints
+                .anyRequest().authenticated() // All other requests need to be authenticated
+                //.anyRequest().hasAuthority("SCOPE_READ")
+            )   
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .oauth2ResourceServer(oAuth -> oAuth.jwt(Customizer.withDefaults()))
+            .httpBasic(withDefaults())
+            .build();
+        }
 
     @Bean
     JwtEncoder jwtEncoder() {
@@ -87,6 +77,7 @@ public class SecurityConfig {
         SecretKeySpec originalKey = new SecretKeySpec(bytes, 0, bytes.length,"RSA");
         return NimbusJwtDecoder.withSecretKey(originalKey).macAlgorithm(MacAlgorithm.HS512).build();
     }
+
+
     
 }
-

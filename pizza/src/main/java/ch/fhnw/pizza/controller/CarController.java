@@ -98,6 +98,26 @@ public class CarController {
         return availableCars;
     }
 
+    /*@GetMapping(path="/rented-days", produces = "application/json")
+    public int[] getRentedDaysByAllCars() {
+        List<Rental> rentalList = rentalService.getAllRentals();
+        List<Long> rentalCarIDs = new ArrayList<>();
+        
+        for (Rental rental : rentalList) {
+            Long rentalCarID = rental.getRentalCarId();
+            if (!rentalCarIDs.contains(rentalCarID)) {
+                rentalCarIDs.add(rentalCarID);
+            }
+        }
+        
+        int[] rentedDaysByAllCars = new int[rentalCarIDs.size()];
+        for (int i = 0; i < rentalCarIDs.size(); i++) {
+            rentedDaysByAllCars[i] = getRentedDaysByCarId(rentalCarIDs.get(i));
+        }
+        
+        return rentedDaysByAllCars;
+    }*/
+
 
 
  
