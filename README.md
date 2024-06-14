@@ -28,14 +28,14 @@ L&N CARRENTAL (Car_Rental_Project) is a Web application allowing the car rental 
 1. As an admin, I want to have a Web application so that I can use it on different mobile devices and on desktop computers.
 2. As an admin, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
 3. As an admin, I want to use list views so that I can explore and read my business data (get).
-4. As an admin, I want to update (update) and create (post) views so that I can maintain my business data.
+4. As an admin, I want to update (put) and create (post) views so that I can maintain my business data.
 5. As an admin, I want to delete (delete) specific data entries to maintain my business data.
-6. As an admin, I want the system to validate my credentials during login to ensure security.
-7. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
-8. As a user, I want to have a Web applicatioon so that I can use it on different mobile devices and on desktop computers.
-9. As a user, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
-10. As a user, I want to search for available cars in a specific period of time (business logic).
-11. As a user, I want to see the frequency of cars rented (business logic).
+6. As an admin, I want to see the frequency of cars rented (business logic).
+7. As an admin, I want the system to validate my credentials during login to ensure security.
+8. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
+9. As a user, I want to have a Web applicatioon so that I can use it on different mobile devices and on desktop computers.
+10. As a user, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+11. As a user, I want to search for available cars in a specific period of time (business logic).
 12. As a user, I want to see information about the company.
 13. As a suer, I want to be able to contact the company.
 14. As a user, I want the appication to validate my credentials during login to ensure security.
@@ -94,12 +94,12 @@ Steps:
 
 #### Scenario 5: Frequency of Rental
 ------------------------------------------------------------
-Description: A logged in user want to see the frequency of cars rented.
+Description: A logged in admin wants to see the frequency of cars rented.
 
 Steps: 
-1. User navigates to the frequency of rental screen.
+1. Admin navigates to the cars screen to see the frequency.
 2. An overview of the frequency of rentals is provided.
-3. User logs out.
+3. Admin logs out.
 
 
 ### Use Case
@@ -225,16 +225,16 @@ No cars available: If no cars match the search criteria, system displays a messa
 
 #### Use Case 7: Rental Frequency Cars
 ------------------------------------------------------------
-Actors:         User, Application
+Actors:         Admin, Application
 
-Description:    Allows a user to see the rentalfrequency of cars.
+Description:    Allows an admin to see the rentalfrequency of cars.
 
-Precondition:   User is logged in and navigates to the rental frequency screen.
+Precondition:   Admin is logged in and navigates to the rental frequency screen.
 
-Postcondition:  User views the desired information.
+Postcondition:  Admin views the desired information.
 
 Main Flow:
-2. Application retrieves and displays the information.
+1. Application retrieves and displays the information.
 
 Alternate Flows: 
 No data available: If no data is available, system displays a message.
