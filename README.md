@@ -465,11 +465,12 @@ The admin can see all currently registered cars. The query is executed through a
 
 - API: GET 08_GetCarsWithDaysOfRent -  [`/api/cars/rented-days`]
 
-An overview for the admin is provided to see how many days the cars of the fleet was rented over the existence of our business.
+An overview for the admin is provided to see how many days the cars of the fleet were rented during the existence of our business.
+
 ![](images/PieChart_BL.png)
 
 /addcar
-- API: POST 04_CreateNewCar with Bindings -  [`/api/ars`]
+- API: POST 04_CreateNewCar with Bindings -  [`/api/cars`]
 
 The admin can fill in a form to add a new car. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /cars screen. If the admin decides not to record a new car, there is a cancel button to be navigated back to the /cars screen. Back on the /cars screen the table is refreshed with the new car.
 
