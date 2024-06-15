@@ -358,12 +358,20 @@ Then, the following further dependencies are added to the project `pom.xml`:
 </dependency>
 ```
 
+- JWT-Auth:
+```XML
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
+```
+
 - SWAGGER:
 ```XML
    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-      <version>2.3.0</version>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	<version>2.3.0</version>
    </dependency>
 ```
 
