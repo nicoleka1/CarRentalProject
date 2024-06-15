@@ -307,7 +307,7 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 
 #### Model
 
-![](images/FinalEntityRelationshipCarRental.png)
+![](images/EntityRelationshipCarRental.png)
 
 ### Business Logic
 Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
