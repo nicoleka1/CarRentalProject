@@ -432,7 +432,7 @@ The admin can fill in a form to add a new user. With tha add button the entries 
 The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
 
 /users
-- API: DELETE 03_DeleteCarUserByID with Bindings -  [`/api/caruser/{{carUserID}}`]
+- API: DELETE 03_DeleteCarUserByID with Bindings -  [`/api/caruser/{carUserID}`]
 
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
@@ -448,12 +448,12 @@ The admin can see all currently registered admins. The query is executed through
 The admin can fill in a form to add a new admin. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /users screen. If the admin decides not to record a new admin, there is a cancel button to be navigated back to the /admins screen. Back on the /admins screen the table is refreshed with the new admin.
 
 /admins
-- API:  PUT 02_UpdateAdminByID with Bindings -  [`/api/admin/{{adminId}}`]
+- API:  PUT 02_UpdateAdminByID with Bindings -  [`/api/admin/{adminId}`]
 
 The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
 
 /admins
-- API: DELETE 02_DeleteAdminByID with Bindings -  [`/api/admin/{{adminId}}`]
+- API: DELETE 02_DeleteAdminByID with Bindings -  [`/api/admin/{adminId}`]
 
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
@@ -473,12 +473,12 @@ An overview for the admin is provided to see how many days the cars of the fleet
 The admin can fill in a form to add a new car. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /cars screen. If the admin decides not to record a new car, there is a cancel button to be navigated back to the /cars screen. Back on the /cars screen the table is refreshed with the new car.
 
 /cars
-- API:  PUT 04_UpdateCarByID with Bindings -  [`/api/cars/{{carId}}`]
+- API:  PUT 04_UpdateCarByID with Bindings -  [`/api/cars/{carId}`]
 
 The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
 
 /cars
-- API: DELETE 04_DeleteCarByID with Bindings - [`/api/cars/{{carId}}`]
+- API: DELETE 04_DeleteCarByID with Bindings - [`/api/cars/{carId}`]
 
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
@@ -494,12 +494,12 @@ The admin can see all currently registered locations. The query is executed thro
 The admin can fill in a form to add a new location. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /locations screen. If the admin decides not to record a new location, there is a cancel button to be navigated back to the /locations screen. Back on the /locations screen the table is refreshed with the new location.
 
 /locations
-- API:  PUT 05_UpdateLocationByID with Bindings -  [`/api/locations/{{locationId}}`]
+- API:  PUT 05_UpdateLocationByID with Bindings -  [`/api/locations/{locationId}`]
 
 The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
 
 /locations
-- API: DELETE 05_DeleteLocationByID with Bindings -  [`/api/locations/{{locationId}}`]
+- API: DELETE 05_DeleteLocationByID with Bindings -  [`/api/locations/{locationId}`]
 
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
@@ -516,12 +516,12 @@ The admin can see all currently registered rentals. The query is executed throug
 The admin can fill in a form to add a new rental. With tha add button the entries can be sent and the post query is executed. The form is validated, if an entry is missing, a error messages pops up. If everything is filled in the admin is navigated back to the /rentals screen. If the admin decides not to record a new location, there is a cancel button to be navigated back to the /rentals screen. Back on the /rentals screen the table is refreshed with the new location.
 
 /rentals
-- API:  PUT 06_UpdateRentalByID with Bindings -  [`/api/rentals/{{rentalID}}`]
+- API:  PUT 06_UpdateRentalByID with Bindings -  [`/api/rentals/{rentalID}`]
 
 The admin can click on a row that should be updated. With an update state variable the ID of the clicked row is stored to display the current data in an update panel that opens on the right. In the update panel the form fields are provided where the desired update data can be entered. The field values are linked with bindings to the query with the body. With the update button the query is executed and the data provider refreshed to show the updated values in the table.
 
 /rentals
-- API: DELETE 06_DeleteRentalByID with Binding -  [`/api/rentals/{{rentalId}}`]
+- API: DELETE 06_DeleteRentalByID with Binding -  [`/api/rentals/{rentalId}`]
 
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
