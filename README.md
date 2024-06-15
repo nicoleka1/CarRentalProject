@@ -376,7 +376,8 @@ Then, the following further dependencies are added to the project `pom.xml`:
 ```
 
 ### Frontend Technology
-Our Web application was developed using Budibase.
+Our Web application was developed using Budibase:
+https://inttech.budibase.app/embed/brugg4carrentalproject
 
 Our views and which APIs were used in which view are described below.
 
