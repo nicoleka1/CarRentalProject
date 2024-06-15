@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.fhnw.carrental.data.domain.Admin;
 import ch.fhnw.carrental.data.domain.Car;
 import ch.fhnw.carrental.data.domain.Rental;
 import ch.fhnw.carrental.business.service.RentalService;
@@ -33,6 +34,15 @@ public class CarService {
     private RentalService rentalService;
     
     public Car findCarByCarID(Long id) {
+        try {
+            Car car = carRepository.findById(id).get();
+            return car;
+        } catch (Exception e) {
+            throw new RuntimeException("Car with id " + id + " not found");
+        }
+    }
+
+        public Car findCarById(Long id) {
         try {
             Car car = carRepository.findById(id).get();
             return car;

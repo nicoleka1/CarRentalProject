@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import ch.fhnw.carrental.data.domain.Car;
 import ch.fhnw.carrental.data.domain.CarUser;
 import ch.fhnw.carrental.data.repository.CarUserRepository;
 
@@ -21,8 +21,7 @@ public class CarUserService {
         return carUser;
     }
 
-
-    public CarUser findCarUserById(Long id) {
+    public CarUser findCarUserBycarUserID(Long id) {
         try {
             CarUser carUser = carUserRepository.findById(id).get();
             return carUser;
