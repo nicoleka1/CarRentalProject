@@ -68,7 +68,7 @@ Steps:
 6. Admin logs out. 
 
 
-#### Scenario 3: User Registration
+#### Scenario 3: User Login
 ------------------------------------------------------------
 Descripiton: The user logs in to see business data.
 
