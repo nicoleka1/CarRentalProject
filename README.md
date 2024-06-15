@@ -312,7 +312,8 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 ### Business Logic
 > Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
 >
-> Based on UC-5, there will be all available cars in a specified period of time (entities involved: cars and rentals):
+
+Based on UC-5, there will be all available cars in a specified period of time (entities involved: cars and rentals):
 The method takes two parameters: startDate and endDate, which define the desired rental period. First, it calls the getUnavailableRentalCarIDs method from the rentalService object, passing the startDate and endDate as arguments. This method returns an array of Car IDs that are not available for rental during the specified period. Next, it retrieves a list of all cars in the system by calling the getAllCars method. An empty list named availableCars is then created to store the cars that are available for rental. The method then iterates over the list of all cars. For each car, it checks if the car's ID is in the list of unavailable car IDs. If it's not, the car is considered available, and it's added to the availableCars list. Finally, the method prints the list of available cars to the console and returns this list.
 
 **Path**: [`/api/cars/available-cars?startDate=2021-05-04&endDate=2021-05-10`] 
@@ -320,7 +321,7 @@ The method takes two parameters: startDate and endDate, which define the desired
 **Param**: `value="startDate"`, `value="endDate"`
 
 **Method:** `GET`
-> Based on UC-6, there will be information about the frequency of rented cars (entities involved: cars and rentals):
+Based on UC-6, there will be information about the frequency of rented cars (entities involved: cars and rentals):
 The method begins by retrieving all Car and Rental objects from their respective repositories. It then initializes an empty list, carDetailsList, to store the Car objects with updated rental counts. For each Car in the carList, the method initializes a rentedDays counter to zero and retrieves the carID.Next, it iterates over each Rental in the rentalList. For each Rental, it retrieves the rentalCarID, startDate, and endDate. If the carID matches the rentalCarID, it calculates the number of days between the startDate and endDate (inclusive) and adds this to the rentedDays counter.After iterating over all Rental objects, it sets the rentedDays counter as the carRentalCount for the Car object and adds the Car to the carDetailsList. Finally, the method returns the carDetailsList, which contains all Car objects with their updated carRentalCount values.
 
 **Path**: [`/cars/rented-days`]
@@ -338,7 +339,15 @@ We have created a group workspace in Postman to test our APIs. GitHub was used f
 
 ### Backend Technology
 > As suggested we cloned the Pizza Reference Project to start, so did we. Our Web application relies on Spring Boot and the dependency to Spring Data,, Java Persistence API (JPA) and H2 Database. To bootstrap the application the Spring Initializr has been used.
->
+> 
+This Web application is relying on [Spring Boot](https://projects.spring.io/spring-boot) and the following dependencies:
+
+- [Spring Boot](https://projects.spring.io/spring-boot)
+- [Spring Data](https://projects.spring.io/spring-data)
+- [Java Persistence API (JPA)](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
+- [H2 Database Engine](https://www.h2database.com)
+
+To bootstrap the application, the [Spring Initializr](https://start.spring.io/) has been used.
 Then, the following further dependencies are added to the project `pom.xml`:
 
 - DB:
