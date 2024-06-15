@@ -528,7 +528,7 @@ The admin can click on a row that should be updated. With an update state variab
 The admin can click on a row that should be deleted. With an update state variable the ID of the clicked row is sored to display the current data in an update panel that opens on the right. In the update panel a delete button is provided, by clicking the button the query is ececuted and the data provider refreshed to show the table without the deleted values.
 
 ## Execution
-> To run our application the URL in Budibase must be changed. Start the codespace in CarRentalPorject and run the CarApplication.java. The port 8080 must be set to public. And the URL can be set as a stati variable in Budibase.
+To run the application, you need to update the {URL} variable in Budibase RestAPI. First, start the codespace in CarRentalProject and run CarApplication.java. Ensure that port 8080 is set to public. Then, set the URL as a static variable in Budibase, as all endpoints retrieve the codespace link via this variable.For authentication, retrieve either the user or admin token by executing the REST API query 01_auth_my_admin or 01_auth_my_user. The returned value is an authentication token valid for 12 hours, which must be updated as the Token in the static variables of the CarRental project.
 
 ## Deployment to a PaaS
 Deployment to Platform as a Service (PaaS) is optional but recommended for making the application backend accessible without server restarts and providing a unique, constantly available link. However, due to our very small team, we decided not to pursue PaaS deployment at this stage.
