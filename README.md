@@ -33,12 +33,12 @@ L&N CARRENTAL (Car_Rental_Project) is a Web application allowing the car rental 
 6. As an admin, I want to see the frequency of cars rented (business logic).
 7. As an admin, I want the system to validate my credentials during login to ensure security.
 8. As an admin, I want to be notified with error messages if I provide invalid credentials during login.
-9. As a user, I want to have a Web applicatioon so that I can use it on different mobile devices and on desktop computers.
+9. As a user, I want to have a Web application so that I can use it on different mobile devices and on desktop computers.
 10. As a user, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
 11. As a user, I want to search for available cars in a specific period of time (business logic).
 12. As a user, I want to see information about the company.
 13. As a suer, I want to be able to contact the company.
-14. As a user, I want the appication to validate my credentials during login to ensure security.
+14. As a user, I want the application to validate my credentials during login to ensure security.
 15. As a user, I want to be notified with error messages if I provide invalid credentials during login.
 
 #### Some stories as more detailed scenarios:
