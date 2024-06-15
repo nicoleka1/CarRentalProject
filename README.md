@@ -310,8 +310,7 @@ One-to-Many relationship indicating that a location can have multiple cars avail
 ![](images/FinalEntityRelationshipCarRental.png)
 
 ### Business Logic
-> Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
->
+Our APIs are available in the swagger endpoint. The default Swagger US page is available at /swagger-ui.html.
 
 Based on UC-5, there will be all available cars in a specified period of time (entities involved: cars and rentals):
 The method takes two parameters: startDate and endDate, which define the desired rental period. First, it calls the getUnavailableRentalCarIDs method from the rentalService object, passing the startDate and endDate as arguments. This method returns an array of Car IDs that are not available for rental during the specified period. Next, it retrieves a list of all cars in the system by calling the getAllCars method. An empty list named availableCars is then created to store the cars that are available for rental. The method then iterates over the list of all cars. For each car, it checks if the car's ID is in the list of unavailable car IDs. If it's not, the car is considered available, and it's added to the availableCars list. Finally, the method prints the list of available cars to the console and returns this list.
