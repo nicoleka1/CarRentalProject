@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.carrental.security.TokenService;
 
-import io.swagger.v3.oas.annotations.Hidden;
-
 @RestController
 @RequestMapping("/authentication")
 public class AuthenticationController {
