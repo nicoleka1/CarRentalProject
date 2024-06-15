@@ -466,6 +466,7 @@ The admin can see all currently registered cars. The query is executed through a
 - API: GET 08_GetCarsWithDaysOfRent -  [`/api/cars/rented-days`]
 
 An overview for the admin is provided to see how many days the cars of the fleet was rented over the existence of our business.
+![](images/PieChart_BL.png)
 
 /addcar
 - API: POST 04_CreateNewCar with Bindings -  [`/api/ars`]
