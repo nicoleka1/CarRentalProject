@@ -46,10 +46,6 @@ public class CarApplication {
 	}
 	
 
-	// Use this method to initialize placeholder data without using Postman
-	// If you are persisting data in a file (see application.properties), initializing data that already exists will cause an error during starting the application
-	// To resolve the error, delete the file and restart the application
-
 	// Default values set for the car object for testing purposes
 	@PostConstruct
 	private void initPlaceholderData() throws Exception {

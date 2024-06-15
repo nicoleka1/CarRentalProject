@@ -77,6 +77,7 @@ public class CarService {
             throw new Exception("Car with id " + id + " does not exist");
     }
 
+    // Get available cars for a given time range
     public List<Car> getAvailableCars(LocalDate startDate,LocalDate endDate) {
 
         Long[] unavailableCarIDs = rentalService.getUnavailableRentalCarIDs(startDate, endDate);
@@ -94,7 +95,7 @@ public class CarService {
         return availableCars;
     }
 
-
+    // Get car details with rented days
     public List<Car> getCarDetailsWithRentedDays() {
         List<Car> carList = carRepository.findAll();
         List<Car> carDetailsList = new ArrayList<>();
@@ -121,25 +122,4 @@ public class CarService {
         return carDetailsList;
     }
 
-
- /* //Business Logic to get current offer according to the location of the user requesting the menu
-    private String getCurrentOffer(String location) {
-        String currentOffer = "No special offer for your location. Do check back again.";
-        if("Basel".equalsIgnoreCase(location))
-            currentOffer = "10% off on all large pizzas!!!";
-        else if("Brugg".equalsIgnoreCase(location))
-            currentOffer = "Two for the price of One on all small pizzas!!!";
-        return currentOffer;
-    }
-
-    public Menu getMenuByLocation(String location) {
-        String currentOffer = getCurrentOffer(location);
-        List<Pizza> pizzaList = getAllPizzas();
-        Menu menu = new Menu();
-        menu.setPizzaList(pizzaList);
-        menu.setCurrentOffer(currentOffer);
-        return menu;
-    }
-    */
-        
 }
